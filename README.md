@@ -3,7 +3,7 @@ This project is just an example on how to use the CLI, and also is meant to be
 used for interacting with the Dutch Exchange in Rinkeby for testing.
 
 > The CLI was created for testing porpoused only, so some command might work 
-> different than expected, anyways, comment any issues with the CLI so we can
+> different than expected. So please comment any issues with the CLI so we can
 > improve it over time.
 
 For aditional information and for reference, check out the following 
@@ -16,7 +16,7 @@ Gnosis Blog, were you will find a series of posts about it.
 contracts of the Duch X
 * [Github: dx-examples-api](https://github.com/gnosis/dx-examples-api): 
 Example project and documentation on how to use the Dutch X API.
-* [Github: dx-examples-api](https://github.com/gnosis/dx-examples-liquidity-bots): 
+* [Github: dx-examples-liquidity-bots](https://github.com/gnosis/dx-examples-liquidity-bots): 
 Check an example on how to run the liquidity bots and more details about the CLI.
 * [Github: dx-services](https://github.com/gnosis/dx-services): Services, 
 repositories and bots to interact with DX.
@@ -29,10 +29,12 @@ application for the Dutch X seller interface
 First install docker:
 * [https://docs.docker.com/install/]()
 
+Then execute the following steps:
 
 ```bash
 # Clone repo
-git clone https://github.com/gnosis/dx-example-cli-rinkeby.git
+git clone https://github.com/gnosis/dx-example-cli-rinkeby.git dx-cli
+cd dx-cli
 
 # Allow the CLI script to be executed
 chmod +x cli
@@ -216,3 +218,18 @@ You can deposit tokens and withdraw them by using the following commands:
 #   Once the auction clears
 ./cli claim-seller WETH-RDN
 ```
+
+# Security and Liability
+All the code is provided WITHOUT ANY WARRANTY; without even the implied warranty
+ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# Feedback, suggestions, collaborations
+Please, let us know any typo or error in the project or documentation. 
+
+Any idea, proposal or colaboration will be welcome.
+
+Also, you are encouraged to participate in the [Gitter Channel for the Dutch X](https://gitter.im/gnosis/DutchX).
+
+# Contributors
+* [Angel Rodriguez](https://github.com/anxolin)
+* [Daniel Sanchez](https://github.com/dasanra)
