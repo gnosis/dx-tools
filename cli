@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Config
+MARKETS=WETH-RDN,WETH,OMG
+MNEMONIC='candy maple cake sugar pudding cream honey rich smooth crumble sweet treat'
+ETHEREUM_RPC_URL=https://rinkeby.infura.io
+RDN_TOKEN_ADDRESS=0x7e2331beaec0ded82866f4a1388628322c8d5af0
+OMG_TOKEN_ADDRESS=0xc57b5b272ccfd0f9e4aa8c321ec22180cbb56054
+DX_SERVICE_VERSION=staging
+
+# Get the params
+CLI_PARAMS=${@:--h}
+
+echo
+echo "  *********  Dutch X CLI - $DX_SERVICE_VERSION  *********"
+echo "    Operation: $CLI_PARAMS"
+echo "    Markets: $MARKETS"
+echo "    Ethereum Node: $ETHEREUM_RPC_URL"
+echo "  *********************************"
+echo
+
+docker run \
+  -e MNEMONIC="$MNEMONIC" \
+  -e ETHEREUM_RPC_URL=$ETHEREUM_RPC_URL \
+  -e MARKETS=$MARKETS \
+  -e RDN_TOKEN_ADDRESS=$RDN_TOKEN_ADDRESS \
+  -e OMG_TOKEN_ADDRESS=$OMG_TOKEN_ADDRESS \
+  gnosispm/dx-services:$DX_SERVICE_VERSION \
+  npm run --silent cli -- $CLI_PARAMS
