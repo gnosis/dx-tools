@@ -25,5 +25,7 @@ docker run \
   -e MARKETS=$MARKETS \
   -e RDN_TOKEN_ADDRESS=$RDN_TOKEN_ADDRESS \
   -e OMG_TOKEN_ADDRESS=$OMG_TOKEN_ADDRESS \
+  -e DEBUG_HIDE_DATE=true \
+  -e DEBUG_COLORS=true \
   gnosispm/dx-services:$DX_SERVICE_VERSION \
   npm run --silent cli -- $CLI_PARAMS
