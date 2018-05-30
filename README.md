@@ -24,7 +24,7 @@ repositories and bots to interact with DX.
 application for the Dutch X seller interface
 
 
-## Get started with the CLI
+# Get started with the CLI
 
 First install docker:
 * [https://docs.docker.com/install/]()
@@ -44,7 +44,17 @@ chmod +x cli
 #    it must download the Docker image.
 ./cli -h
 ```
+# Config
+The configuration is done using environment variables. 
+The `cli` script is already configured and should work as it is, but in order to
+do trading you should change the mnemonic to use your own.
 
+The best way to redefine the mnemonic or any other config, is just creating a 
+`local.conf` file that override the environemnt variabled defined in the `cli`.
+
+> This local.conf is ignored by git, so is ok to have your personal config there.
+
+# Basic usage
 ## Get token list
 Get all avaliable tokens in the DX
 ```bash
@@ -171,6 +181,12 @@ You can export the result into a CSV file (it'll include some extra info):
 # Trade in the DX
 To be able to trade, you have to edit the `cli` file and modify the `MNEMONIC`
 variable and use your own mnemonic.
+
+The best way to redefine the mnemonic, is just creating a `local.conf` file in
+the root of the project with the following content:
+```
+MNEMONIC='this is your secret mnemonic that will be ignored by git'
+```
 
 ## Send tokens
 This method is not part of the DX, but it cames handy for testing.
