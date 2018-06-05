@@ -1,26 +1,26 @@
-# Dutch X Rinkeby CLI (Command Line Interface) 
+# Dutch X Rinkeby CLI (Command Line Interface)
 This project is just an example on how to use the CLI, and also is meant to be
 used for interacting with the Dutch Exchange in Rinkeby for testing.
 
-> The CLI was created for testing porpoused only, so some command might work 
+> The CLI was created for testing porpoused only, so some command might work
 > different than expected. So please comment any issues with the CLI so we can
 > improve it over time.
 
-For aditional information and for reference, check out the following 
+For aditional information and for reference, check out the following
 repositories:
 
-* [Gnosis Blog](https://blog.gnosis.pm/tagged/dutchx): Learn about Dutch X in 
+* [Gnosis Blog](https://blog.gnosis.pm/tagged/dutchx): Learn about Dutch X in
 Gnosis Blog, were you will find a series of posts about it.
 * [Gitter Channel](https://gitter.im/gnosis/DutchX): Participate in the gitter channel.
-* [Github: dx-contracts](https://github.com/gnosis/dx-contracts): Smart 
+* [Github: dx-contracts](https://github.com/gnosis/dx-contracts): Smart
 contracts of the Duch X
-* [Github: dx-examples-api](https://github.com/gnosis/dx-examples-api): 
+* [Github: dx-examples-api](https://github.com/gnosis/dx-examples-api):
 Example project and documentation on how to use the Dutch X API.
-* [Github: dx-examples-liquidity-bots](https://github.com/gnosis/dx-examples-liquidity-bots): 
+* [Github: dx-examples-liquidity-bots](https://github.com/gnosis/dx-examples-liquidity-bots):
 Check an example on how to run the liquidity bots and more details about the CLI.
-* [Github: dx-services](https://github.com/gnosis/dx-services): Services, 
+* [Github: dx-services](https://github.com/gnosis/dx-services): Services,
 repositories and bots to interact with DX.
-* [Github: dx-react](https://github.com/gnosis/dx-react): Front end web 
+* [Github: dx-react](https://github.com/gnosis/dx-react): Front end web
 application for the Dutch X seller interface
 
 
@@ -45,16 +45,25 @@ chmod +x cli
 ./cli -h
 ```
 # Config
-The configuration is done using environment variables. 
+The configuration is done using environment variables.
 The `cli` script is already configured and should work as it is, but in order to
 do trading you should change the mnemonic to use your own.
 
-The best way to redefine the mnemonic or any other config, is just creating a 
+The best way to redefine the mnemonic or any other config, is just creating a
 `local.conf` file that override the environemnt variabled defined in the `cli`.
 
 > This local.conf is ignored by git, so is ok to have your personal config there.
 
 # Basic usage
+## Get account balances
+Get balances for all tokens of an account
+```bash
+# Show the balances of the first account of the MNEMONIC
+./cli balances
+
+# You can ask for the balances of any other account
+./cli balances --account=The desired account
+```
 ## Get token list
 Get all avaliable tokens in the DX
 ```bash
@@ -79,7 +88,7 @@ There are several prices, depending on what we need:
 ```bash
 # Current price of an ongoing auction
 #   This price is the price biders use (it's going down)
-#   A N/A means there is no price (i.e. an auction that didn't run, so  you 
+#   A N/A means there is no price (i.e. an auction that didn't run, so  you
 #   cannot bid).
 ./cli price WETH-RDN
 
@@ -115,7 +124,7 @@ Filter by dates:
 # Get last week's auctions
 ./cli auctions --period last-week
 
-# Get auctions between two dates 
+# Get auctions between two dates
 ./cli auctions --from-date=25-05-2018 --to-date=26-05-2018
 ```
 
@@ -142,7 +151,7 @@ Show the information of the trades that were executed in a given period of time.
 # Get last week's auctions
 ./cli trades --period last-week
 
-# Get auctions between two dates 
+# Get auctions between two dates
 ./cli trades --from-date=25-05-2018 --to-date=26-05-2018
 ```
 
@@ -240,7 +249,7 @@ All the code is provided WITHOUT ANY WARRANTY; without even the implied warranty
  of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # Feedback, suggestions, collaborations
-Please, let us know any typo or error in the project or documentation. 
+Please, let us know any typo or error in the project or documentation.
 
 Any idea, proposal or colaboration will be welcome.
 

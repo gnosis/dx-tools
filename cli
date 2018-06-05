@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Config
-MARKETS=WETH-RDN,WETH,OMG
+MARKETS=WETH-RDN,WETH-OMG
 MNEMONIC='candy maple cake sugar pudding cream honey rich smooth crumble sweet treat'
 ETHEREUM_RPC_URL=https://rinkeby.infura.io
 RDN_TOKEN_ADDRESS=0x7e2331beaec0ded82866f4a1388628322c8d5af0
