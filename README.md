@@ -233,7 +233,7 @@ You can deposit tokens and withdraw them by using the following commands:
 
 # Buy
 #   Buy 12 RDN in the current auction
-./cli sell 12 WETH-RDN
+./cli buy 12 WETH-RDN
 
 # Claim the seller tokens
 #   Once the auction clears
@@ -241,7 +241,7 @@ You can deposit tokens and withdraw them by using the following commands:
 
 # Claim the buyer tokens
 #   Once the auction clears
-./cli claim-seller WETH-RDN
+./cli claim-buyer WETH-RDN
 ```
 
 # Security and Liability
