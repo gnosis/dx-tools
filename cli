@@ -4,8 +4,8 @@
 MARKETS=WETH-RDN,WETH-OMG
 MNEMONIC='candy maple cake sugar pudding cream honey rich smooth crumble sweet treat'
 ETHEREUM_RPC_URL=https://rinkeby.infura.io
-RDN_TOKEN_ADDRESS=0x7e2331beaec0ded82866f4a1388628322c8d5af0
-OMG_TOKEN_ADDRESS=0xc57b5b272ccfd0f9e4aa8c321ec22180cbb56054
+RDN_TOKEN_ADDRESS=0x3615757011112560521536258c1e7325ae3b48ae
+OMG_TOKEN_ADDRESS=0x00df91984582e6e96288307e9c2f20b38c8fece9
 DX_SERVICE_VERSION=staging
 
 [ -f local.conf ] && source local.conf || echo "WARN: local.conf file wasn't found. Using default config"
