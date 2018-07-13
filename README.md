@@ -1,6 +1,6 @@
-# Dutch X Rinkeby CLI (Command Line Interface)
+# DutchX Rinkeby CLI (Command Line Interface)
 This project is just an example on how to use the CLI, and also is meant to be
-used for interacting with the Dutch Exchange in Rinkeby for testing.
+used for interacting with the DutchX in Rinkeby for testing.
 
 > The CLI was created for testing porpoused only, so some command might work
 > different than expected. So please comment any issues with the CLI so we can
@@ -9,19 +9,19 @@ used for interacting with the Dutch Exchange in Rinkeby for testing.
 For aditional information and for reference, check out the following
 repositories:
 
-* [Gnosis Blog](https://blog.gnosis.pm/tagged/dutchx): Learn about Dutch X in
+* [Gnosis Blog](https://blog.gnosis.pm/tagged/dutchx): Learn about DutchX in
 Gnosis Blog, were you will find a series of posts about it.
 * [Gitter Channel](https://gitter.im/gnosis/DutchX): Participate in the gitter channel.
 * [Github: dx-contracts](https://github.com/gnosis/dx-contracts): Smart
 contracts of the Duch X
 * [Github: dx-examples-api](https://github.com/gnosis/dx-examples-api):
-Example project and documentation on how to use the Dutch X API.
+Example project and documentation on how to use the DutchX API.
 * [Github: dx-examples-liquidity-bots](https://github.com/gnosis/dx-examples-liquidity-bots):
 Check an example on how to run the liquidity bots and more details about the CLI.
 * [Github: dx-services](https://github.com/gnosis/dx-services): Services,
 repositories and bots to interact with DX.
 * [Github: dx-react](https://github.com/gnosis/dx-react): Front end web
-application for the Dutch X seller interface
+application for the DutchX seller interface
 
 
 # Get started with the CLI
@@ -253,7 +253,7 @@ Please, let us know any typo or error in the project or documentation.
 
 Any idea, proposal or colaboration will be welcome.
 
-Also, you are encouraged to participate in the [Gitter Channel for the Dutch X](https://gitter.im/gnosis/DutchX).
+Also, you are encouraged to participate in the [Gitter Channel for the DutchX](https://gitter.im/gnosis/DutchX).
 
 # Contributors
 * [Angel Rodriguez](https://github.com/anxolin)
