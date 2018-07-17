@@ -2,34 +2,20 @@
   <img width="350px" src="http://dutchx.readthedocs.io/en/latest/_static/DutchX-logo_blue.svg" />
 </p>
 
-# DutchX Rinkeby CLI (Command Line Interface)
+# DutchX Example: How to use the CLI
 This project is just an example on how to use the CLI, and also is meant to be
-used for interacting with the DutchX in Rinkeby for testing.
+used for interacting with the DutchX.
 
 > The CLI was created for testing porpoused only, so some command might work
-> different than expected. So please comment any issues with the CLI so we can
+> different than expected.
+>
+> So please comment any issues with the CLI so we can
 > improve it over time.
 
-For aditional information and for reference, check out the following
-repositories:
-
-* [Gnosis Blog](https://blog.gnosis.pm/tagged/dutchx): Learn about DutchX in
-Gnosis Blog, were you will find a series of posts about it.
-* [Gitter Channel](https://gitter.im/gnosis/DutchX): Participate in the gitter channel.
-* [Github: dx-contracts](https://github.com/gnosis/dx-contracts): Smart
-contracts of the Duch X
-* [Github: dx-examples-api](https://github.com/gnosis/dx-examples-api):
-Example project and documentation on how to use the DutchX API.
-* [Github: dx-examples-liquidity-bots](https://github.com/gnosis/dx-examples-liquidity-bots):
-Check an example on how to run the liquidity bots and more details about the CLI.
-* [Github: dx-services](https://github.com/gnosis/dx-services): Services,
-repositories and bots to interact with DX.
-* [Github: dx-react](https://github.com/gnosis/dx-react): Front end web
-application for the DutchX seller interface
-
+# Documentation
+Checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 # Get started with the CLI
-
 First install docker:
 * [https://docs.docker.com/install/]()
 
@@ -260,5 +246,11 @@ Any idea, proposal or colaboration will be welcome.
 Also, you are encouraged to participate in the [Gitter Channel for the DutchX](https://gitter.im/gnosis/DutchX).
 
 # Contributors
-* [Angel Rodriguez](https://github.com/anxolin)
-* [Daniel Sanchez](https://github.com/dasanra)
+- Stefan ([Georgi87](https://github.com/Georgi87))
+- Martin ([koeppelmann](https://github.com/koeppelmann))
+- Anxo ([anxolin](https://github.com/anxolin))
+- Dani ([dasanra](https://github.com/dasanra))
+- Dominik ([dteiml](https://github.com/dteiml))
+- David ([W3stside](https://github.com/w3stside))
+- Dmitry ([Velenir](https://github.com/Velenir))
+- Alexander ([josojo](https://github.com/josojo))
