@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="350px" src="http://dutchx.readthedocs.io/en/latest/_static/DutchX-logo_blue.svg" />
+</p>
+
 # DutchX Rinkeby CLI (Command Line Interface)
 This project is just an example on how to use the CLI, and also is meant to be
 used for interacting with the DutchX in Rinkeby for testing.
@@ -33,7 +37,7 @@ Then execute the following steps:
 
 ```bash
 # Clone repo
-git clone https://github.com/gnosis/dx-example-cli-rinkeby.git dx-cli
+git clone https://github.com/gnosis/dx-examples-cli.git dx-cli
 cd dx-cli
 
 # Allow the CLI script to be executed
