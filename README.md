@@ -21,9 +21,10 @@ Checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 **1. Install docker**
 * [https://docs.docker.com/install/]()
 
-**2. Download/clone the CLI scripts**
-Then, git clone the repository, or download it as a
-[ZIP file](https://github.com/gnosis/dx-cli/archive/master.zip)
+**2. Clone the CLI scripts**
+> If you prefer, you can just download the 
+> [ZIP file](https://github.com/gnosis/dx-cli/archive/master.zip) instead of 
+> cloning the git repository.
 
 ```bash
 # Clone repo
@@ -34,32 +35,28 @@ cd dx-cli
 **3. Create `local.conf` using [local.conf.example](./local.conf.example)**
 > This step can be omitted if we plan to use the CLI for read-only operations.
 
-Duplicate [local.conf.example](./local.conf.example) and call the new file
-`local.conf`.
+Create a duplicate [local.conf.example](./local.conf.example) and call the new 
+file `local.conf`.
 
-Edit the file to add your own secret mnemonic that will be used to sign the
-transactions.
+Edit the file in order to add your own secret mnemonic that will be used to sign
+the transactions.
 
-> **NOTE**: that `local.conf` is git ignored, so you can add your wallet config here
->
+> **NOTE**: The `local.conf` is git ignored, so you can add your wallet config 
+> here.
+
 > **IMPORTANT**: Never share this file or the mnemonic with anyone, the mnemonic
 > is protecting your funds from your account, so anyone with access to it could
-> still your tokens and ether.
+> take them.
 
 **4. Make sure the scripts are executable**
 ```bash
 # Allow the CLI script to be executed
 chmod +x cli
-
-# Run help to get all the commands avalible
-#   NOTE: The 1st time you run the command, it will take a litle time because
-#    it must download the Docker image.
-./dutchx-rinkeby -h
 ```
 
 **5. Network info: Review the list of tokens you want to use**
-Review the token pairs and addresses of the tokens for each network you want
-to use:
+
+For each network, check it's config:
 * [network-rinkeby.conf](./network-rinkeby.conf)
 * [network-kovan.conf](./network-kovan.conf)
 * [network-mainnet.conf](./network-mainnet.conf)
@@ -67,8 +64,7 @@ to use:
 This step is important, because DutchX ist's just a protocol, anyone can list
 their tokens, every user should add the token that he want to use with the CLI.
 
-For checking the complete list of tokens that are added in the `DutchX`, you
-can check, depending on the network:
+Check the complete list of tokens that are added in the `DutchX`:
 * **Rinkeby**: The easiest way to check all token pairs that were added to the
   DutchX is to check the API:
   * [https://dutchx-rinkeby.d.exchange/api/docs/#!/markets/getMarkets](https://dutchx-rinkeby.d.exchange/api/docs/#!/markets/getMarkets)
@@ -80,6 +76,8 @@ can check, depending on the network:
   * https://dutchx.readthedocs.io/en/latest/smart-contracts_addresses.html
 
 **6. Try the CLI**
+
+Run the `help` command to get a list of all avaliable commands:
 ```bash
 # Rinkeby
 ./dutchx-rinkeby help
