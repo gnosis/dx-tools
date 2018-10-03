@@ -22,8 +22,8 @@ Checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 * [https://docs.docker.com/install/]()
 
 **2. Clone the CLI scripts**
-> If you prefer, you can just download the 
-> [ZIP file](https://github.com/gnosis/dx-cli/archive/master.zip) instead of 
+> If you prefer, you can just download the
+> [ZIP file](https://github.com/gnosis/dx-cli/archive/master.zip) instead of
 > cloning the git repository.
 
 ```bash
@@ -35,13 +35,13 @@ cd dx-cli
 **3. Create `local.conf` using [local.conf.example](./local.conf.example)**
 > This step can be omitted if we plan to use the CLI for read-only operations.
 
-Create a duplicate [local.conf.example](./local.conf.example) and call the new 
+Create a duplicate [local.conf.example](./local.conf.example) and call the new
 file `local.conf`.
 
 Edit the file in order to add your own secret mnemonic that will be used to sign
 the transactions.
 
-> **NOTE**: The `local.conf` is git ignored, so you can add your wallet config 
+> **NOTE**: The `local.conf` is git ignored, so you can add your wallet config
 > here.
 
 > **IMPORTANT**: Never share this file or the mnemonic with anyone, the mnemonic
@@ -51,7 +51,7 @@ the transactions.
 **4. Make sure the scripts are executable**
 ```bash
 # Allow the CLI script to be executed
-chmod +x cli
+chmod +x dutchx*
 ```
 
 **5. Network info: Review the list of tokens you want to use**
