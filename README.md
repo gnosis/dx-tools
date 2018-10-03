@@ -2,30 +2,52 @@
   <img width="350px" src="http://dutchx.readthedocs.io/en/latest/_static/DutchX-logo_blue.svg" />
 </p>
 
-# DutchX Example: How to use the CLI
-This project is just an example on how to use the CLI, and also is meant to be
-used for interacting with the DutchX.
+# DutchX CLI
+This project provides a simple script that will allow you to run the CLI for:
+* Rinkeby (officially supported testnet)
+* Kovan
+* Mainnet
 
-> The CLI was created for testing porpoused only, so some command might work
+> The CLI was created for testing purposes only, so some command might work
 > different than expected.
 >
-> So please comment any issues with the CLI so we can
-> improve it over time.
+> So please [comment any issues](https://github.com/gnosis/dx-cli/issues) with
+> the CLI so it can be improved over time.
 
 # Documentation
 Checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 # Get started with the CLI
-First install docker:
+**1. Install docker**
 * [https://docs.docker.com/install/]()
 
-Then execute the following steps:
+**2. Download/clone the CLI scripts**
+Then, git clone the repository, or download it as a
+[ZIP file](https://github.com/gnosis/dx-cli/archive/master.zip)
 
 ```bash
 # Clone repo
-git clone https://github.com/gnosis/dx-examples-cli.git dx-cli
+git clone https://github.com/gnosis/dx-cli.git dx-cli
 cd dx-cli
+```
 
+**3. Create `local.conf` using [local.conf.example](./local.conf.example)**
+> This step can be omitted if we plan to use the CLI for read-only operations.
+
+Duplicate [local.conf.example](./local.conf.example) and call the new file
+`local.conf`.
+
+Edit the file to add your own secret mnemonic that will be used to sign the
+transactions.
+
+> **NOTE**: that `local.conf` is git ignored, so you can add your wallet config here
+>
+> **IMPORTANT**: Never share this file or the mnemonic with anyone, the mnemonic
+> is protecting your funds from your account, so anyone with access to it could
+> still your tokens and ether.
+
+**4. Make sure the scripts are executable**
+```bash
 # Allow the CLI script to be executed
 chmod +x cli
 
@@ -34,15 +56,40 @@ chmod +x cli
 #    it must download the Docker image.
 ./cli -h
 ```
-# Config
-The configuration is done using environment variables.
-The `cli` script is already configured and should work as it is, but in order to
-do trading you should change the mnemonic to use your own.
 
-The best way to redefine the mnemonic or any other config, is just creating a
-`local.conf` file that override the environemnt variabled defined in the `cli`.
+**5. Network info: Review the list of tokens you want to use**
+Review the token pairs and addresses of the tokens for each network you want
+to use:
+* [network-rinkeby.conf](./network-rinkeby.conf)
+* [network-kovan.conf](./network-kovan.conf)
+* [network-mainnet.conf](./network-mainnet.conf)
 
-> This local.conf is ignored by git, so is ok to have your personal config there.
+This step is important, because DutchX ist's just a protocol, anyone can list
+their tokens, every user should add the token that he want to use with the CLI.
+
+For checking the complete list of tokens that are added in the `DutchX`, you
+can check, depending on the network:
+* **Rinkeby**: The easiest way to check all token pairs that were added to the
+  DutchX is to check the API:
+  * [https://dutchx-rinkeby.d.exchange/api/docs/#!/markets/getMarkets](https://dutchx-rinkeby.d.exchange/api/docs/#!/markets/getMarkets)
+* **Mainnet**: The easiest way to check all token pairs that were added to the
+    DutchX is to check the API:
+  * [https://dutchx.d.exchange/api/docs/#!/markets/getMarkets](https://dutchx.d.exchange/api/docs/#!/markets/getMarkets)
+* **Kovan**: Unlike `Rinkeby` and `Mainnet`, `Kovan` does't have any API
+  published. To check all available markets, you must do it at smart contract level:
+  * https://dutchx.readthedocs.io/en/latest/smart-contracts_addresses.html
+
+**6. Try the CLI**
+```bash
+# Rinkeby
+./dutchx-rinkeby help
+
+# Kovan
+./dutchx-kovan help
+
+# Rinkeby
+./dutchx-mainnet help
+```
 
 # Basic usage
 ## Get account balances
@@ -178,14 +225,8 @@ You can export the result into a CSV file (it'll include some extra info):
 ```
 
 # Trade in the DX
-To be able to trade, you have to edit the `cli` file and modify the `MNEMONIC`
-variable and use your own mnemonic.
-
-The best way to redefine the mnemonic, is just creating a `local.conf` file in
-the root of the project with the following content:
-```
-MNEMONIC='this is your secret mnemonic that will be ignored by git'
-```
+To be able to trade, you have to provide your own `mnemonic`. Please,
+**[Step 3 in the Configure the CLI]**(https://github.com/gnosis/dx-cli#get-started-with-the-cli).
 
 ## Send tokens
 This method is not part of the DX, but it cames handy for testing.

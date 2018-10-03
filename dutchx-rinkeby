@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# DutchX CLI for rinkeby
+#   - Setup:
+#       1. Make sure docker is installed:
+#          https://docs.docker.com/install/
+#
+#       2. Create 'local.conf' using local.conf.example
+#
+#       3. Add your mnemonic in 'local.conf' (not required for read-only
+#          operations)
+#
+#       4. Make sure the scripts are executable. Run in a terminal:
+#          chmod +x dutchx*
+#
+#       5. Run it. i.e
+#          ./dutchx-rinkeby help
+
+NETWORK=rinkeby
+source base-cli.sh

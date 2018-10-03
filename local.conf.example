@@ -1,0 +1,10 @@
+# Local config for the CLI example
+
+# Setup:
+#   1. Duplicate this file and call it 'local.conf'
+#      note:
+#        'local.conf' is git ignored, so you can add your wallet config here
+#        you should NEVER share this file with anyone
+#   2. Add your secret mnemonic into the MNEMONIC variable
+
+MNEMONIC="this is your local private mnemonic no body should know about"
