@@ -19,7 +19,7 @@ Checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 # Get started with the CLI
 **1. Install docker**
-* [https://docs.docker.com/install/]()
+* https://docs.docker.com/install/
 
 **2. Clone the CLI scripts**
 > If you prefer, you can just download the
