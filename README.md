@@ -87,7 +87,7 @@ Run the `help` command to get a list of all avaliable commands:
 # Kovan
 ./dutchx-kovan help
 
-# Rinkeby
+# Mainnet
 ./dutchx-mainnet help
 ```
 
