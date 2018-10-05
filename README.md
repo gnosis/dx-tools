@@ -99,7 +99,7 @@ Get balances for all tokens of an account
 ./dutchx-rinkeby balances
 
 # You can ask for the balances of any other account
-./dutchx-rinkeby balances --account=The desired account
+./dutchx-rinkeby balances --account=0x45345B00156Efe2a859b7E254Ab3ae0bB2eBfc0E
 ```
 ## Get token list
 Get all avaliable tokens in the DX
