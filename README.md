@@ -43,6 +43,9 @@ file `local.conf`.
 Edit the file in order to add your own secret mnemonic that will be used to sign
 the transactions.
 
+Aditionally, in this file you can add any custom configuration. Note that by 
+modifying only this file you can keep your CLI in sync with future changes.
+
 > **NOTE**: The `local.conf` is git ignored, so you can add your wallet config
 > here.
 

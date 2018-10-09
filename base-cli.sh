@@ -10,10 +10,8 @@ NETWORK=${NETWORK:-rinkeby}
 ETHEREUM_RPC_URL="https://${NETWORK}.infura.io"
 DX_SERVICE_VERSION=staging # Check: https://hub.docker.com/r/gnosispm/dx-services/tags/
 SHOW_COLORS=true
-DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*,DEBUG-dx-service:services:*,DEBUG-dx-service:repositories:PriceRepo*
+DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*
 ENVIRONMENT=pro  # local, pre, pro
-#DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*,DEBUG-*
-#DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*
 
 # IMPORTANT:
 #   - Override the MNEMONIC variable in a uncommited file 'local.conf'
@@ -22,12 +20,15 @@ ENVIRONMENT=pro  # local, pre, pro
 #   - Alternative, if there's no 'local.conf', you can also provide MNEMONIC as
 #     a environment variable. i.e
 #       MNEMONIC="any other mnemonic" cli help
+#
+#   - The DOCKER_PARAMS_LOCAL can be optionally overrided in local.conf to allow
+#     to add any arbritraty info
 MNEMONIC="super secret thing that nobody should know"
-
+DOCKER_PARAMS_LOCAL=""
 
 # IMPORTANT:
 #   - This config changes by network, so review it's value in:
-#     - network-ovan.conf
+#     - network-kovan.conf
 #     - network-rinkeby.conf
 #     - network-mainnet.conf
 #   - The following variables will be just the default, and will be overrided by
@@ -38,7 +39,7 @@ MNEMONIC="super secret thing that nobody should know"
 CLI_PARAMS=${@:--h}
 
 DOCKER_IMAGE="gnosispm/dx-services:$DX_SERVICE_VERSION"
-APP_COMMAND="yarn cli $CLI_PARAMS"
+APP_COMMAND="node src/cli/cli $CLI_PARAMS"
 NETWOR_CONF="network-$NETWORK.conf"
 
 [ -f local.conf ] && source local.conf || echo "WARN: local.conf file wasn't found. Using default config"
@@ -71,6 +72,7 @@ docker run \
   -e ETHEREUM_RPC_URL=$ETHEREUM_RPC_URL \
   -e NODE_ENV=$ENVIRONMENT \
   -e MARKETS=$MARKETS \
+  $DOCKER_PARAMS_LOCAL \
   $DOCKER_PARAMS_NETWORK \
   $DOCKER_IMAGE \
   $APP_COMMAND

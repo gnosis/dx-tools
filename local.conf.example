@@ -1,4 +1,7 @@
 # Local config for the CLI example
+#   - Here you can add your own mnemonic or any other config.
+#   - If you only modify this file you can keep updating the repository with
+#     the latest changes
 
 # Setup:
 #   1. Duplicate this file and call it 'local.conf'
@@ -7,4 +10,19 @@
 #        you should NEVER share this file with anyone
 #   2. Add your secret mnemonic into the MNEMONIC variable
 
+
+# Uncomment for debug the script
+# set -x 
+
+# Mnemonic
 MNEMONIC="this is your local private mnemonic no body should know about"
+
+# Increase debug messages
+#DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*,DEBUG-*
+
+# Optionally, you can add env vars in your local conf
+# For example:
+#   - Change the default gas price used from average to safeLow or fast
+#read -r -d '' DOCKER_PARAMS_LOCAL << EOM
+#  -e DEFAULT_GAS_PRICE_USED=fast
+#EOM
