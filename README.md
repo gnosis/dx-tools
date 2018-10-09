@@ -19,7 +19,9 @@ Checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 # Get started with the CLI
 **1. Install docker**
-* [https://docs.docker.com/install/]()
+* Windows: https://store.docker.com/editions/community/docker-ce-desktop-windows
+* Mac OS: https://store.docker.com/editions/community/docker-ce-desktop-mac
+* For other platforms or more details: https://docs.docker.com/install/
 
 **2. Clone the CLI scripts**
 > If you prefer, you can just download the
@@ -85,7 +87,7 @@ Run the `help` command to get a list of all avaliable commands:
 # Kovan
 ./dutchx-kovan help
 
-# Rinkeby
+# Mainnet
 ./dutchx-mainnet help
 ```
 
@@ -97,7 +99,7 @@ Get balances for all tokens of an account
 ./dutchx-rinkeby balances
 
 # You can ask for the balances of any other account
-./dutchx-rinkeby balances --account=The desired account
+./dutchx-rinkeby balances --account=0x45345B00156Efe2a859b7E254Ab3ae0bB2eBfc0E
 ```
 ## Get token list
 Get all avaliable tokens in the DX
