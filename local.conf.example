@@ -30,6 +30,9 @@ DX_SERVICE_VERSION=staging
 # Optionally, you can add env vars in your local conf
 # For example:
 #   - Change the default gas price used from average to safeLow or fast
+#   - Set your time zone by setting TZ to one of the ones in:
+#        https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 #read -r -d '' DOCKER_PARAMS_LOCAL << EOM
 #  -e DEFAULT_GAS_PRICE_USED=fast
+#  -e TZ=Europe/Berlin
 #EOM
