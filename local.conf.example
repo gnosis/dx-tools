@@ -17,6 +17,13 @@
 # Mnemonic
 MNEMONIC="this is your local private mnemonic no body should know about"
 
+# Version
+#   - You can use any version in https://hub.docker.com/r/gnosispm/dx-services/tags/
+#   - By default it uses master, because it's the last stable version
+#   - You can fix it to a version (i.e. v0.6.12) 
+#   - You can use latest unastable version: development
+DX_SERVICE_VERSION=staging
+
 # Increase debug messages
 #DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*,DEBUG-*
 

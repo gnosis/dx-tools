@@ -37,13 +37,16 @@ DOCKER_PARAMS_LOCAL=""
 
 # Get the params
 CLI_PARAMS=${@:--h}
-
-DOCKER_IMAGE="gnosispm/dx-services:$DX_SERVICE_VERSION"
 APP_COMMAND="node src/cli/cli $CLI_PARAMS"
-NETWOR_CONF="network-$NETWORK.conf"
 
+# Get LOCAL conf and NETWORK conf
+NETWOR_CONF="network-$NETWORK.conf"
 [ -f local.conf ] && source local.conf || echo "WARN: local.conf file wasn't found. Using default config"
 [ -f "$NETWOR_CONF" ] && source "$NETWOR_CONF" || echo "WARN: $NETWOR_CONF file wasn't found. Using default config"
+
+# Docker image used:
+#   https://hub.docker.com/r/gnosispm/dx-services/tags/
+DOCKER_IMAGE="gnosispm/dx-services:$DX_SERVICE_VERSION"
 
 echo
 echo "  *********  DutchX CLI - $DX_SERVICE_VERSION  *********"
