@@ -43,9 +43,9 @@ DOCKER_PARAMS_LOCAL=""
 
 # Get LOCAL conf and NETWORK conf
 LOCAL_CONF="conf/local.conf"
-NETWOR_CONF="conf/network-$NETWORK.conf"
+NETWORK_CONF="conf/network-$NETWORK.conf"
 [ -f "$LOCAL_CONF" ] && source "$LOCAL_CONF" && echo "INFO: Load $LOCAL_CONF" || echo "WARN: $LOCAL_CONF file wasn't found. Using default config"
-[ -f "$NETWOR_CONF" ] && source "$NETWOR_CONF" && echo "INFO: Load $NETWOR_CONF" || echo "WARN: $NETWOR_CONF file wasn't found. Using default config"
+[ -f "$NETWORK_CONF" ] && source "$NETWORK_CONF" && echo "INFO: Load $NETWORK_CONF" || echo "WARN: $NETWORK_CONF file wasn't found. Using default config"
 
 # Docker image used:
 #   https://hub.docker.com/r/gnosispm/dx-services/tags/
@@ -59,7 +59,7 @@ echo "    Ethereum Node: $ETHEREUM_RPC_URL"
 echo ""
 echo "    Using:"
 echo "      Local config: $LOCAL_CONF"
-echo "      Network config: $NETWOR_CONF"
+echo "      Network config: $NETWORK_CONF"
 [ ! -z "$BOTS_CONFIG_INFO" ] && echo "      $BOTS_CONFIG_INFO"
 echo ""
 echo "    Learn how to configure and use the CLI:"
