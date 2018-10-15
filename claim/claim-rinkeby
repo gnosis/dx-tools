@@ -10,5 +10,5 @@
 #set -x 
 
 NETWORK=rinkeby
-source util/app-command-cli.sh
+source util/app-command-claim.sh
 source util/base.sh

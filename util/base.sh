@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
 # Basic usage
-#
-#   cli help
-#   NETWORK=mainnet cli help
+#   CLI:
+#       duxchx-rinkeby help
+#   BOTS:
+#       bots/bots-rinkeby
+#   CLAIM:
+#       claim/claim-rinkeby
+
+# Enable debug
+# set -x
 
 # Config
 NETWORK=${NETWORK:-rinkeby}
@@ -35,28 +41,26 @@ DOCKER_PARAMS_LOCAL=""
 #     the network config files decribed iin the previous point
 #
 
-# Get the params
-CLI_PARAMS=${@:--h}
-APP_COMMAND="node src/cli/cli $CLI_PARAMS"
-
 # Get LOCAL conf and NETWORK conf
-NETWOR_CONF="network-$NETWORK.conf"
-[ -f local.conf ] && source local.conf || echo "WARN: local.conf file wasn't found. Using default config"
-[ -f "$NETWOR_CONF" ] && source "$NETWOR_CONF" || echo "WARN: $NETWOR_CONF file wasn't found. Using default config"
+LOCAL_CONF="conf/local.conf"
+NETWOR_CONF="conf/network-$NETWORK.conf"
+[ -f "$LOCAL_CONF" ] && source "$LOCAL_CONF" && echo "INFO: Load $LOCAL_CONF" || echo "WARN: $LOCAL_CONF file wasn't found. Using default config"
+[ -f "$NETWOR_CONF" ] && source "$NETWOR_CONF" && echo "INFO: Load $NETWOR_CONF" || echo "WARN: $NETWOR_CONF file wasn't found. Using default config"
 
 # Docker image used:
 #   https://hub.docker.com/r/gnosispm/dx-services/tags/
 DOCKER_IMAGE="gnosispm/dx-services:$DX_SERVICE_VERSION"
 
 echo
-echo "  *********  DutchX CLI - $DX_SERVICE_VERSION  *********"
+echo "  *********  DutchX ($DX_SERVICE_VERSION) - $APP_NAME  *********"
 echo "    Operation: $CLI_PARAMS"
 echo "    Markets: $MARKETS"
 echo "    Ethereum Node: $ETHEREUM_RPC_URL"
 echo ""
 echo "    Using:"
-echo "      Local config: local.conf"
+echo "      Local config: $LOCAL_CONF"
 echo "      Network config: $NETWOR_CONF"
+[ ! -z "$BOTS_CONFIG_INFO" ] && echo "      $BOTS_CONFIG_INFO"
 echo ""
 echo "    Learn how to configure and use the CLI:"
 echo "      https://github.com/gnosis/dx-cli#get-started-with-the-cli"
@@ -79,6 +83,7 @@ docker run \
   -e NODE_ENV=$ENVIRONMENT \
   -e MARKETS=$MARKETS \
   $DOCKER_PARAMS_LOCAL \
+  $DOCKER_PARAMS_BOTS \
   $DOCKER_PARAMS_NETWORK \
   $DOCKER_IMAGE \
   $APP_COMMAND

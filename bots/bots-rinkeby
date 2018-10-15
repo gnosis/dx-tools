@@ -7,8 +7,8 @@
 #   https://github.com/gnosis/dx-cli#get-started-with-the-cli
 
 # Uncomment for DEBUG the script
-#set -x 
+# set -x
 
 NETWORK=rinkeby
-source util/app-command-cli.sh
-source util/base.sh
+source util/app-command-bots.sh
+source util/base-bots.sh
