@@ -1,15 +1,7 @@
-// TODO: Dani - Markets and addressess are specified in the network config
-
-// // Markets
-// const MARKETS = [
-//   { tokenA: 'WETH', tokenB: 'RDN' }
-// ]
-
-// // Token addresses
-// const TOKEN_ADDRESSES = {
-//   WETH_TOKEN_ADDRESS: '0xc58b96a0278bd2c77bc93e01b148282fb8e753a5',
-//   RDN_TOKEN_ADDRESS: '0x3615757011112560521536258c1e7325ae3b48ae'
-// }
+// Get the markets (configured used environment variables)
+//  i.e. MARKETS=RDN-WETH,OMG-WETH
+//  See the network-<networkName>.conf files
+const MARKETS = _getMarkets()
 
 // Buy bot rules
 const BUY_LIQUIDITY_RULES_DEFAULT = [
@@ -76,14 +68,33 @@ const EXCHANGE_PRICE_FEED_STRATEGIES = {
   }
 }
 
-
 // Bots API Port
 BOTS_API_PORT = 8081
+
+function _getMarkets () {
+  let markets
+  const marketsEnv = process.env['MARKETS']
+  if (marketsEnv) {
+    const marketsArray = marketsEnv.split(',')
+    markets = marketsArray.map(marketString => {
+      const market = marketString.split('-')
+      return {
+        tokenA: market[0],
+        tokenB: market[1]
+      }
+    })
+  } else {
+    throw new Error('The markets environment var is mandatory. i.e. MARKETS=RDN-WETH,OMG-WETH')
+  }
+
+  return markets
+}
+
 
 module.exports = {
   // Market and tokens
   MARKETS,
-  ...TOKEN_ADDRESSES,
+  // ...TOKEN_ADDRESSES,
 
   // Bot config
   MAIN_BOT_ACCOUNT,

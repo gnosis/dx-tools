@@ -44,8 +44,8 @@ DOCKER_PARAMS_LOCAL=""
 # Get LOCAL conf and NETWORK conf
 LOCAL_CONF="conf/local.conf"
 NETWORK_CONF="conf/network-$NETWORK.conf"
-[ -f "$LOCAL_CONF" ] && source "$LOCAL_CONF" && echo "INFO: Load $LOCAL_CONF" || echo "WARN: $LOCAL_CONF file wasn't found. Using default config"
-[ -f "$NETWORK_CONF" ] && source "$NETWORK_CONF" && echo "INFO: Load $NETWORK_CONF" || echo "WARN: $NETWORK_CONF file wasn't found. Using default config"
+[ -f "$LOCAL_CONF" ] && source "$LOCAL_CONF" || echo "WARN: $LOCAL_CONF file wasn't found. Using default config"
+[ -f "$NETWORK_CONF" ] && source "$NETWORK_CONF" || echo "WARN: $NETWORK_CONF file wasn't found. Using default config"
 
 # Docker image used:
 #   https://hub.docker.com/r/gnosispm/dx-services/tags/
