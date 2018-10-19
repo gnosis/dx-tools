@@ -85,13 +85,13 @@ Check the complete list of tokens that are added in the `DutchX`:
 Run the `help` command to get a list of all avaliable commands:
 ```bash
 # Rinkeby
-./dutchx-rinkeby help
+./dutchx-rinkeby -h
 
 # Kovan
-./dutchx-kovan help
+./dutchx-kovan -h
 
 # Mainnet
-./dutchx-mainnet help
+./dutchx-mainnet -h
 ```
 
 # Basic usage

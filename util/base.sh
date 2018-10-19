@@ -2,7 +2,7 @@
 
 # Basic usage
 #   CLI:
-#       duxchx-rinkeby help
+#       duxchx-rinkeby -h
 #   BOTS:
 #       bots/bots-rinkeby
 #   CLAIM:
@@ -25,7 +25,7 @@ ENVIRONMENT=pro  # local, pre, pro
 #
 #   - Alternative, if there's no 'local.conf', you can also provide MNEMONIC as
 #     a environment variable. i.e
-#       MNEMONIC="any other mnemonic" cli help
+#       MNEMONIC="any other mnemonic" cli -h
 #
 #   - The DOCKER_PARAMS_LOCAL can be optionally overrided in local.conf to allow
 #     to add any arbritraty info
