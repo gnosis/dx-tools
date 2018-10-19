@@ -2,6 +2,7 @@
 //  i.e. MARKETS=RDN-WETH,OMG-WETH
 //  See the network-<networkName>.conf files
 const MARKETS = _getMarkets()
+const DEFAULT_GAS_PRICE_USED = 'fast' // safeLow, average, fast
 
 // Buy bot rules
 const BUY_LIQUIDITY_RULES_DEFAULT = [
@@ -92,6 +93,8 @@ function _getMarkets () {
 
 
 module.exports = {
+  DEFAULT_GAS_PRICE_USED,
+
   // Market and tokens
   MARKETS,
   // ...TOKEN_ADDRESSES,
