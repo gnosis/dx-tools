@@ -30,7 +30,7 @@ Checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 ```bash
 # Clone repo
-git clone https://github.com/gnosis/dx-cli.git dx-cli
+git clone https://github.com/gnosis/dx-cli.git
 cd dx-cli
 ```
 
