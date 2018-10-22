@@ -195,7 +195,7 @@ Show the information of the trades that were executed in a given period of time.
 ./dutchx-rinkeby trades --from-date=25-05-2018 --to-date=26-05-2018
 ```
 
-Aditionally, you can applu any of this filters:
+Aditionally, you can apply any of this filters:
 ```bash
 # Filter by token
 #   It will filter by trades of auctions that contain the given token
