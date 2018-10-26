@@ -19,15 +19,6 @@ Trading can be done in the following networks:
 # Documentation
 For more information on the underlying protocol, checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
-
-# Security and Liability
-All the code and explanation is provided WITHOUT ANY WARRANTY; without even the implied warranty
- of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- An API gathers publicly available data from the Ethereum blockchain on the usage of this Program.
-Please note that where you use the DutchX protocol to auction off a token and no one participates on the bid side of the auction within a 24 hour period, the token to be sold will be valued at zero. Therefore, we recommend that you also ensure liquidity for the bid-side.
-
-If you are inexperiences with blockchain operations, we do not recommend to use the CLI. Only you are responsible for your private key.
-
 # Getting ready to trade
 **1a Install docker**
 * Windows: https://store.docker.com/editions/community/docker-ce-desktop-windows
@@ -294,7 +285,19 @@ As mentioned previously, you can also get the history of previous trades. Use th
 # Export the result to a file
 ./dutchx-rinkeby trades --from-date=25-05-2018 --to-date=26-05-2018 --file=auctions.csv
 ```
+# No security, No liability, your own risk
+This CLI is made available to you on an as-is basis without any form of warranty, representation or assurance (in each case whether express or implied) that the CLI is fit for its intended purpose or that it is free from any errors or faults causing you loss or damage. 
 
+Reliance on the CLI is at your own risk and your full responsibility. We will not be liable to you for any loss or damage, whether in contract, tort (including negligence), breach of statutory duty, or otherwise. We will not be liable for loss of profits, sales, business, or revenue, business interruption, anticipated savings, business opportunity, goodwill or reputation or any indirect or consequential loss or damage.
+
+If you are inexperienced with blockchain technology and operations, we strongly recommend that you do not use this CLI. 
+Depending on how you use the DutchX Protocol, you may be required to satisfy additional local law requirements, which may include but are not limited to instating KYC/AML procedures and gaining legal authorisations from applicable regulators. 
+
+An API gathers publicly available data from the Ethereum blockchain on the usage of the DutchX Protocol. Depending on how you use this Program, you may be required to provide and apply an appropriate privacy policy to comply with law.
+
+You alone are responsible for your private key(s). Any third party that gains access to your private key(s) may be able to misappropriate your funds. If your private key or password gets lost or stolen, your funds associated with your wallet address may be unrecoverable and permanently lost. Any errors or malfunctions caused by or otherwise related to your digital wallet or vault may also result in the loss of your funds. We take no responsibility therefore whatsoever.
+
+If you use the DutchX Protocol to auction off a token and no one participates on the bid side of the auction within a 24 hour period, the token to be sold will be valued at zero. Therefore, we strongly recommend that you also ensure liquidity for the bid-side.
 
 
 # Feedback, suggestions, collaborations
