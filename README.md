@@ -11,9 +11,9 @@ Trading can be done in the following networks:
 * Mainnet
 
 > The CLI was initially created for testing purposes and internal use only, hence some commands might work
-> differently than expected.
+> differentl than explained here or as expected.
 >
-> Please [comment any issues](https://github.com/gnosis/dx-cli/issues) with
+> Please [report any issues](https://github.com/gnosis/dx-cli/issues) with
 > the CLI so we can make it better for everyone!
 
 # Documentation
@@ -179,7 +179,7 @@ In order to see the resulting balance after trading in `Balance in DX`, you must
 # Claim tokens after participating as a seller, which will give you the second token in the pair
 ./dutchx-rinkeby claim-seller WETH-RDN
 
-# Claim tokens after participating as a bidder, which will give you the first tokin in the pair
+# Claim tokens after participating as a bidder, which will give you the first token in the pair
 ./dutchx-rinkeby claim-buyer WETH-RDN
 ```
 
