@@ -143,6 +143,8 @@ go through the steps in the image one-by-one.
 
 You can now take part in the running auction as a bidder in the current auction, or post a sell order for the coming one. 
 
+> **NOTE**: Remember that as a seller you can only submit to the running auction if it is in the 10 min waiting period before it starts or else the upcoming auction. Sellers cannot deposit to auctions happening after the upcoming auction. 
+
 Before placing a trade, we recommend you try the following commands:
 
  ```bash
