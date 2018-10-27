@@ -98,7 +98,7 @@ Run the `help` command on the Terminal to get a list of all avaliable commands:
 Trading on the DutchX requires you to send your tokens to a smart contract, where the trading occurs. 
 The whole trading process looks as the following image:
 
-<img src="https://raw.githubusercontent.com/gnosis/dx-docs/master/Images/trading_process.png" width="600" height="400">
+<img src="./docs/images/cli-trading-process.png" width="600" height="400">
 
 
 
