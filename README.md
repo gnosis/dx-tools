@@ -20,12 +20,12 @@ Trading can be done in the following networks:
 For more information on the underlying protocol, checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 # Getting ready to trade
-**1a Install docker**
+**1. Install docker**
 * Windows: https://store.docker.com/editions/community/docker-ce-desktop-windows
 * Mac OS: https://store.docker.com/editions/community/docker-ce-desktop-mac
 * For other platforms or more details: https://docs.docker.com/install/
 
-**1b Alternatively to 1a: Clone the CLI scripts**
+**2. Clone the CLI scripts**
 > Alternatively, you can download the
 > [ZIP file](https://github.com/gnosis/dx-cli/archive/master.zip) instead of
 > cloning the git repository.
@@ -36,7 +36,7 @@ git clone https://github.com/gnosis/dx-cli.git dx-cli
 cd dx-cli
 ```
 
-**2. Create `local.conf` using [local.conf.example](./local.conf.example)**
+**3. Create `local.conf` using [local.conf.example](./local.conf.example)**
 > This step can be omitted if you plan to use the CLI for read-only operations.
 
  **IMPORTANT**: Your mnemonic phrase will be required in order to link your wallet to the DutchX. Make sure you don't share
@@ -46,7 +46,7 @@ Go to the folder where you downloaded the repository, create a copy of the [loca
  and call the new
 file `local.conf`.
 
-Edit the file in order to add your own secret mnemonic that will be used to sign
+Edit the `DEFAULT_MNEMONIC` and add your own secret mnemonic that will be used to sign
 the transactions.
 
 > **NOTE**: The `local.conf` is git ignored, so you can add your wallet config
@@ -54,13 +54,13 @@ the transactions.
 
 
 
-**3. Make sure the scripts are executable**
+**4. Make sure the scripts are executable**
 ```bash
 # Allow the CLI script to be executed
 chmod +x dutchx*
 ```
 
-**4. Network info: Review the list of tokens you want to use**
+**5. Network info: Review the list of tokens you want to use**
 
 > **NOTE**: This step can be skipped if you don't intend to list new tokens on the DutchX.
 
@@ -79,7 +79,7 @@ Check out the complete list of tokens listed on the `DutchX` here:
 * **Kovan**: Unlike `Rinkeby` and `Mainnet`, `Kovan` doesn't have a published API. To check all available markets, you must do so on smart contract level:
   * https://dutchx.readthedocs.io/en/latest/smart-contracts_addresses.html
 
-**5. Try the CLI**
+**6. Try the CLI**
 
 Run the `help` command on the Terminal to get a list of all avaliable commands:
 ```bash
@@ -98,12 +98,12 @@ Run the `help` command on the Terminal to get a list of all avaliable commands:
 Trading on the DutchX requires you to send your tokens to a smart contract, where the trading occurs. 
 The whole trading process looks as the following image:
 
-<img src="https://raw.githubusercontent.com/gnosis/dx-docs/master/source/_static/DurtchX_graphi.png" width="600" height="400">
+<img src="https://raw.githubusercontent.com/gnosis/dx-docs/master/Images/trading_process.png" width="600" height="400">
 
 
 
 Before we start explaining each step in the image, we will use the balance command to make the process more clear. 
-All the commands used in this explanation will be for the Rinkeby Testnet. If you want to trade on Ethereum Mainnet, change `Rinkeby` to `mainnet`
+All the commands used in this explanation will be for the Rinkeby Testnet. If you want to trade on the Ethereum Mainnet, use `./dutchx-mainnet` instead of `./dutchx-rinkeby`.
 
 
 ```bash
@@ -125,21 +125,21 @@ All the commands used in this explanation will be for the Rinkeby Testnet. If yo
 
 As you can see, there are two types of balance for every listed token: 
 
-`Balance of user` indicates the balance in the users wallet. 
+* `Balance of user` indicates the balance in the users wallet. 
 
-`Balance in DX` indicates the balance that has been deposited in the DutchX smart contract and is ready to trade. Lets now 
+* `Balance in DX` indicates the balance that has been deposited in the DutchX smart contract and is ready to trade. Lets now 
 go through the steps in the image one-by-one. 
 
-#####1. Deposit tokens
+##### 1. Deposit tokens
  Use the following command to deposit tokens you want to trade: 
 
 ```bash
 ./dutchx-rinkeby deposit 0.35 WETH
 ```
-
+ 
 > **NOTE**: Since ETH is not an ERC-20, the DutchX will automatically call the wrapped Ether smart contract and wrap your Ether.
 
-#####2. Trade on the DutchX
+##### 2. Trade on the DutchX
 
 You can now take part in the running auction as a bidder in the current auction, or post a sell order for the coming one. 
 
@@ -168,7 +168,7 @@ After picking the pair you want to trade and checking the state of a given aucti
 
 > **NOTE**: For the sell command, you currently need to specify the index of the upcoming auction in which you want to sell your tokens. To ensure that it is the next auction which start, check the state again, see which one is running and add 1 to the auction index. The 361 noted in the command above is an example only. 
 
-#####3. Claim the tokens from the auction you took part in
+##### 3. Claim the tokens from the auction you took part in
 
 In order to see the resulting balance after trading in `Balance in DX`, you must execute the following commands:
 
@@ -188,7 +188,7 @@ their receiving tokens (once they bid) anytime during the auction and can claim 
 
 We recommend bidders to claim tokens once the auction has ended in order to avoid unnecessary gas costs.
 
-#####4. Withrdaw tokens from the DutchX smart contract 
+##### 4. Withrdaw tokens from the DutchX smart contract 
 
 This is the final step if you would like to have your tokens back in your wallet. It simply sends tokens from your `Balance in DX` to your `Balance of user`
 
@@ -208,7 +208,7 @@ We will do a rundown on some useful commands, starting by reminding you the comm
 # Rinkeby
 ./dutchx-rinkeby -h
 ```
-####Price related commands
+#### Price related commands
 These set of commands will output one of the most important pieces of information when exchanging tokens - price. 
 There are several prices you can call depending on your needs:
 ```bash
@@ -229,7 +229,7 @@ There are several prices you can call depending on your needs:
 # This is not part of the DX. It's just a reference.
 ./dutchx-rinkeby market-price WETH-RDN
 ```
-####Auction and trading history commands
+#### Auction and trading history commands
 
 It can prove useful to check information of previous auctions and trades in the past. You can display the information
 of cleared auctions and filter it by dates using the following commands:
