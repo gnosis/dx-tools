@@ -14,8 +14,13 @@
 # Uncomment for debug the script
 # set -x 
 
-# Mnemonic
-MNEMONIC="this is your local private mnemonic no body should know about"
+# Mnemonic:
+#   - Use the DEFAULT_MNEMONIC
+#   - Allow to override it using environment variables.
+#     i.e:
+#         MNEMONIC="any other mnemonic" ./dutchx-mainnet -h
+DEFAULT_MNEMONIC="this is your local private mnemonic no body should know about"
+MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
 
 # Version
 #   - You can use any version in https://hub.docker.com/r/gnosispm/dx-services/tags/

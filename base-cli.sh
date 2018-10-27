@@ -23,7 +23,8 @@ ENVIRONMENT=pro  # local, pre, pro
 #
 #   - The DOCKER_PARAMS_LOCAL can be optionally overrided in local.conf to allow
 #     to add any arbritraty info
-MNEMONIC="super secret thing that nobody should know"
+MNEMONIC_DEFAULT="super secret thing that nobody should know"
+MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
 DOCKER_PARAMS_LOCAL=""
 
 # IMPORTANT:
