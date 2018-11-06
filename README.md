@@ -3,7 +3,7 @@
 </p>
 
 # DutchX CLI
-This project provides a simple script that will allow you to trade on the DutchX using the Command Line Interface (CLI). 
+This project provides a simple script that will allow you to trade on the DutchX using the Command Line Interface (CLI).
 Trading can be done in the following networks:
 
 * Rinkeby (recommended to test)
@@ -32,7 +32,7 @@ For more information on the underlying protocol, checkout the [DutchX Documentat
 
 ```bash
 # Clone repo
-git clone https://github.com/gnosis/dx-cli.git dx-cli
+git clone https://github.com/gnosis/dx-cli.git
 cd dx-cli
 ```
 
@@ -49,6 +49,9 @@ file `local.conf`.
 Edit the `DEFAULT_MNEMONIC` and add your own secret mnemonic that will be used to sign
 the transactions.
 
+Additionally, in this file you can add any custom configuration. Note that by
+modifying only this file you can keep your CLI in sync with future changes.
+
 > **NOTE**: The `local.conf` is git ignored, so you can add your wallet config
 > here.
 
@@ -64,24 +67,24 @@ chmod +x dutchx*
 
 > **NOTE**: This step can be skipped if you don't intend to list new tokens on the DutchX.
 
-This step is relevant because the DutchX is an open protocol where anyone can list new tokens to trade. 
+This step is relevant because the DutchX is an open protocol where anyone can list new tokens to trade.
 
-Each network has the following configuration: 
+Each network has the following configuration:
 * [network-rinkeby.conf](./network-rinkeby.conf)
 * [network-kovan.conf](./network-kovan.conf)
 * [network-mainnet.conf](./network-mainnet.conf)
 
 Check out the complete list of tokens listed on the `DutchX` here:
-* **Rinkeby**: 
+* **Rinkeby**:
   * [https://dutchx-rinkeby.d.exchange/api/docs/#!/markets/getMarkets](https://dutchx-rinkeby.d.exchange/api/docs/#!/markets/getMarkets)
-* **Mainnet**: 
+* **Mainnet**:
   * [https://dutchx.d.exchange/api/docs/#!/markets/getMarkets](https://dutchx.d.exchange/api/docs/#!/markets/getMarkets)
 * **Kovan**: Unlike `Rinkeby` and `Mainnet`, `Kovan` doesn't have a published API. To check all available markets, you must do so on smart contract level:
   * https://dutchx.readthedocs.io/en/latest/smart-contracts_addresses.html
 
 **6. Try the CLI**
 
-Run the `help` command on the Terminal to get a list of all avaliable commands:
+Run the `help` command to get a list of all available commands:
 ```bash
 # Rinkeby
 ./dutchx-rinkeby -h
@@ -93,16 +96,20 @@ Run the `help` command on the Terminal to get a list of all avaliable commands:
 ./dutchx-mainnet -h
 ```
 
-# Start Trading 
+Reliance on the CLI is at your own risk and your full responsibility. We will not be liable to you for any loss or damage, whether in contract, tort (including negligence), breach of statutory duty, or otherwise. We will not be liable for loss of profits, sales, business, or revenue, business interruption, anticipated savings, business opportunity, goodwill or reputation or any indirect or consequential loss or damage.
+# Start Trading
 ## DutchX trading process
-Trading on the DutchX requires you to send your tokens to a smart contract, where the trading occurs. 
+To be able to trade, you have to provide your own `mnemonic`. Please,
+**[Step 3 in the Configure the CLI]**(https://github.com/gnosis/dx-cli#get-started-with-the-cli).
+
+Trading on the DutchX requires you to send your tokens to a smart contract, where the trading occurs.
 The whole trading process looks as the following image:
 
 <img src="./docs/images/cli-trading-process.png" width="600" height="400">
 
 
 
-Before we start explaining each step in the image, we will use the balance command to make the process more clear. 
+Before we start explaining each step in the image, we will use the balance command to make the process more clear.
 All the commands used in this explanation will be for the Rinkeby Testnet. If you want to trade on the Ethereum Mainnet, use `./dutchx-mainnet` instead of `./dutchx-rinkeby`.
 
 
@@ -113,7 +120,7 @@ All the commands used in this explanation will be for the Rinkeby Testnet. If yo
 # You will see the balances your balances displayed in a similar way as below:
   INFO-cli      ACCOUNT: "Your public Ethereum address" +427ms
   INFO-cli      BALANCE: 4.430652555999879 ETH +3ms
-  INFO-cli 
+  INFO-cli
   INFO-cli      Balances RDN (0x3615757011112560521536258c1e7325ae3b48ae): +941ms
   INFO-cli              - Balance in DX: 222.972178357604664181 +1ms
   INFO-cli              - Balance of user: 111.617365082280797714 +2ms
@@ -123,27 +130,37 @@ All the commands used in this explanation will be for the Rinkeby Testnet. If yo
   INFO-cli              - Balance of user: 0 +0ms
 ```
 
-As you can see, there are two types of balance for every listed token: 
+As you can see, there are two types of balance for every listed token:
 
-* `Balance of user` indicates the balance in the users wallet. 
+* `Balance of user` indicates the balance in the users wallet.
 
-* `Balance in DX` indicates the balance that has been deposited in the DutchX smart contract and is ready to trade. Lets now 
-go through the steps in the image one-by-one. 
+* `Balance in DX` indicates the balance that has been deposited in the DutchX smart contract and is ready to trade. Lets now
+go through the steps in the image one-by-one.
+
+### Send tokens
+This method is not part of the DX, but it's handy for testing.
+
+It will send tokens ERC20 from one account to another.
+
+```bash
+# Send 0.8 RDN to a given account
+./dutchx-rinkeby send 0.8 RDN 0x627306090abab3a6e1400e9345bc60c78a8bef57
+```
 
 ##### 1. Deposit tokens
- Use the following command to deposit tokens you want to trade: 
+ Use the following command to deposit tokens you want to trade:
 
 ```bash
 ./dutchx-rinkeby deposit 0.35 WETH
 ```
- 
+
 > **NOTE**: Since ETH is not an ERC-20, the DutchX will automatically call the wrapped Ether smart contract and wrap your Ether.
 
 ##### 2. Trade on the DutchX
 
-You can now take part in the running auction as a bidder in the current auction, or post a sell order for the coming one. 
+You can now take part in the running auction as a bidder in the current auction, or post a sell order for the coming one.
 
-> **NOTE**: Remember that as a seller you can only submit to the running auction if it is in the 10 min waiting period before it starts or else the upcoming auction. Sellers cannot deposit to auctions happening after the upcoming auction. 
+> **NOTE**: Remember that as a seller you can only submit to the running auction if it is in the 10 min waiting period before it starts or else the upcoming auction. Sellers cannot deposit to auctions happening after the upcoming auction.
 
 Before placing a trade, we recommend you try the following commands:
 
@@ -161,12 +178,12 @@ After picking the pair you want to trade and checking the state of a given aucti
  # This commands will place a bid in the running auction (no need to specify the auction index)
 ./dutchx-rinkeby buy 5 WETH-RDN
 
-# This command posts a sell order for the specified auction index. 
+# This command posts a sell order for the specified auction index.
 
  ./dutchx-rinkeby sell 5 WETH-RDN 361
 ```
 
-> **NOTE**: For the sell command, you currently need to specify the index of the upcoming auction in which you want to sell your tokens. To ensure that it is the next auction which start, check the state again, see which one is running and add 1 to the auction index. The 361 noted in the command above is an example only. 
+> **NOTE**: For the sell command, you currently need to specify the index of the upcoming auction in which you want to sell your tokens. To ensure that it is the next auction which start, check the state again, see which one is running and add 1 to the auction index. The 361 noted in the command above is an example only.
 
 ##### 3. Claim the tokens from the auction you took part in
 
@@ -183,12 +200,12 @@ In order to see the resulting balance after trading in `Balance in DX`, you must
 ./dutchx-rinkeby claim-buyer WETH-RDN
 ```
 
-It is important to remember that sellers can only claim their receiving tokens once the auction has finished. Bidders can claim 
-their receiving tokens (once they bid) anytime during the auction and can claim any additional increments in the future. 
+It is important to remember that sellers can only claim their receiving tokens once the auction has finished. Bidders can claim
+their receiving tokens (once they bid) anytime during the auction and can claim any additional increments in the future.
 
 We recommend bidders to claim tokens once the auction has ended in order to avoid unnecessary gas costs.
 
-##### 4. Withrdaw tokens from the DutchX smart contract 
+##### 4. Withrdaw tokens from the DutchX smart contract
 
 This is the final step if you would like to have your tokens back in your wallet. It simply sends tokens from your `Balance in DX` to your `Balance of user`
 
@@ -209,11 +226,13 @@ We will do a rundown on some useful commands, starting by reminding you the comm
 ./dutchx-rinkeby -h
 ```
 #### Price related commands
-These set of commands will output one of the most important pieces of information when exchanging tokens - price. 
+These set of commands will output one of the most important pieces of information when exchanging tokens - price.
 There are several prices you can call depending on your needs:
 ```bash
-# Price of the ongoing auction
-# N/A would indicate an auction didn't start
+# Current price of an ongoing auction
+#   This price is the price bidders use (it's going down)
+#   A N/A means there is no price (i.e. an auction that didn't run, so  you
+#   cannot bid).
 ./dutchx-rinkeby price WETH-RDN
 
 # USD price for a specific token
@@ -257,6 +276,24 @@ of cleared auctions and filter it by dates using the following commands:
 As mentioned previously, you can also get the history of previous trades. Use the following commands:
 
 ```bash
+# Get todays auctions
+./dutchx-rinkeby trades --period today
+
+# Get last 7 days auctions
+./dutchx-rinkeby trades --period week
+
+# Get this week's auctions
+./dutchx-rinkeby trades --period week
+
+# Get last week's auctions
+./dutchx-rinkeby trades --period last-week
+
+# Get auctions between two dates
+./dutchx-rinkeby trades --from-date=25-05-2018 --to-date=26-05-2018
+```
+
+Additionally, you can apply any of this filters:
+```bash
 # Filter by token
 #   It will filter by trades of auctions that contain the given token
 ./dutchx-rinkeby trades --period today --token RDN
@@ -288,12 +325,10 @@ As mentioned previously, you can also get the history of previous trades. Use th
 ./dutchx-rinkeby trades --from-date=25-05-2018 --to-date=26-05-2018 --file=auctions.csv
 ```
 # No security, No liability, your own risk
-This CLI is made available to you on an as-is basis without any form of warranty, representation or assurance (in each case whether express or implied) that the CLI is fit for its intended purpose or that it is free from any errors or faults causing you loss or damage. 
+This CLI is made available to you on an as-is basis without any form of warranty, representation or assurance (in each case whether express or implied) that the CLI is fit for its intended purpose or that it is free from any errors or faults causing you loss or damage.
 
-Reliance on the CLI is at your own risk and your full responsibility. We will not be liable to you for any loss or damage, whether in contract, tort (including negligence), breach of statutory duty, or otherwise. We will not be liable for loss of profits, sales, business, or revenue, business interruption, anticipated savings, business opportunity, goodwill or reputation or any indirect or consequential loss or damage.
-
-If you are inexperienced with blockchain technology and operations, we strongly recommend that you do not use this CLI. 
-Depending on how you use the DutchX Protocol, you may be required to satisfy additional local law requirements, which may include but are not limited to instating KYC/AML procedures and gaining legal authorisations from applicable regulators. 
+If you are inexperienced with blockchain technology and operations, we strongly recommend that you do not use this CLI.
+Depending on how you use the DutchX Protocol, you may be required to satisfy additional local law requirements, which may include but are not limited to instating KYC/AML procedures and gaining legal authorizations from applicable regulators.
 
 An API gathers publicly available data from the Ethereum blockchain on the usage of the DutchX Protocol. Depending on how you use this Program, you may be required to provide and apply an appropriate privacy policy to comply with law.
 
@@ -306,10 +341,9 @@ If you use the DutchX Protocol to auction off a token and no one participates on
 Please, let us know any typo or error in the project or documentation.
 
 Any idea, proposal or collaboration is welcome.
+Consider checking out [DutchX Read the Docs](https://dutchx.readthedocs.io).
 
-Consider checking out [DutchX Read the Docs](https://gitter.im/gnosis/DutchX).
-
-Also, you are encouraged to participate in the [Gitter Channel for the DutchX](https://dutchx.readthedocs.io).
+Also, you are encouraged to participate in the [Gitter Channel for the DutchX](https://gitter.im/gnosis/DutchX).
 
 # Contributors
 - Stefan ([Georgi87](https://github.com/Georgi87))

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Token Config in:
-#   ./network-rinkeby.conf
+# Token Confing in:
+#   ./network-config.conf
 
 # Get started with the CLI
 #   https://github.com/gnosis/dx-cli#get-started-with-the-cli
@@ -9,6 +9,6 @@
 # Uncomment for DEBUG the script
 #set -x 
 
-NETWORK=rinkeby
-source util/app-command-cli.sh
-source util/base.sh
+NETWORK=kovan
+source util/app-command-claim.sh
+source util/base-bots.sh
