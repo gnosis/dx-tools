@@ -36,13 +36,13 @@ git clone https://github.com/gnosis/dx-cli.git
 cd dx-cli
 ```
 
-**3. Create `local.conf` using [local.conf.example](./local.conf.example)**
+**3. Create `local.conf` using [local.conf.example](./conf/local.conf.example)**
 > This step can be omitted if you plan to use the CLI for read-only operations.
 
  **IMPORTANT**: Your mnemonic phrase will be required in order to link your wallet to the DutchX. Make sure you don't share
  this information and that you keep the `local.conf` file that you will create offline. If you don't do this, you risk losing your funds! Never commit this to Github. If you don't know how to get your mnemonic phrase, you probably should not continue.
 
-Go to the folder where you downloaded the repository, create a copy of the [local.conf.example](./local.conf.example) file
+Go to the folder where you downloaded the repository, create a copy of the [local.conf.example](./conf/local.conf.example) file
  and call the new
 file `local.conf`.
 
@@ -70,9 +70,9 @@ chmod +x dutchx*
 This step is relevant because the DutchX is an open protocol where anyone can list new tokens to trade.
 
 Each network has the following configuration:
-* [network-rinkeby.conf](./network-rinkeby.conf)
-* [network-kovan.conf](./network-kovan.conf)
-* [network-mainnet.conf](./network-mainnet.conf)
+* [network-rinkeby.conf](./conf/network-rinkeby.conf)
+* [network-kovan.conf](./conf/network-kovan.conf)
+* [network-mainnet.conf](./conf/network-mainnet.conf)
 
 Check out the complete list of tokens listed on the `DutchX` here:
 * **Rinkeby**:
