@@ -43,7 +43,7 @@ file `local.conf`.
 Edit the file in order to add your own secret mnemonic that will be used to sign
 the transactions.
 
-Aditionally, in this file you can add any custom configuration. Note that by 
+Additionally, in this file you can add any custom configuration. Note that by
 modifying only this file you can keep your CLI in sync with future changes.
 
 > **NOTE**: The `local.conf` is git ignored, so you can add your wallet config
@@ -82,7 +82,7 @@ Check the complete list of tokens that are added in the `DutchX`:
 
 **6. Try the CLI**
 
-Run the `help` command to get a list of all avaliable commands:
+Run the `help` command to get a list of all available commands:
 ```bash
 # Rinkeby
 ./dutchx-rinkeby -h
@@ -127,7 +127,7 @@ There are several prices, depending on what we need:
 
 ```bash
 # Current price of an ongoing auction
-#   This price is the price biders use (it's going down)
+#   This price is the price bidders use (it's going down)
 #   A N/A means there is no price (i.e. an auction that didn't run, so  you
 #   cannot bid).
 ./dutchx-rinkeby price WETH-RDN
@@ -195,7 +195,7 @@ Show the information of the trades that were executed in a given period of time.
 ./dutchx-rinkeby trades --from-date=25-05-2018 --to-date=26-05-2018
 ```
 
-Aditionally, you can applu any of this filters:
+Additionally, you can apply any of this filters:
 ```bash
 # Filter by token
 #   It will filter by trades of auctions that contain the given token
@@ -232,7 +232,7 @@ To be able to trade, you have to provide your own `mnemonic`. Please,
 **[Step 3 in the Configure the CLI]**(https://github.com/gnosis/dx-cli#get-started-with-the-cli).
 
 ## Send tokens
-This method is not part of the DX, but it cames handy for testing.
+This method is not part of the DX, but it's handy for testing.
 
 It will send tokens ERC20 from one account to another.
 
@@ -285,7 +285,7 @@ All the code is provided WITHOUT ANY WARRANTY; without even the implied warranty
 # Feedback, suggestions, collaborations
 Please, let us know any typo or error in the project or documentation.
 
-Any idea, proposal or colaboration will be welcome.
+Any idea, proposal or collaboration will be welcome.
 
 Also, you are encouraged to participate in the [Gitter Channel for the DutchX](https://gitter.im/gnosis/DutchX).
 

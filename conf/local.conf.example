@@ -12,7 +12,7 @@
 
 
 # Uncomment for debug the script
-# set -x 
+# set -x
 
 # Mnemonic
 MNEMONIC="this is your local private mnemonic no body should know about"
@@ -20,8 +20,8 @@ MNEMONIC="this is your local private mnemonic no body should know about"
 # Version
 #   - You can use any version in https://hub.docker.com/r/gnosispm/dx-services/tags/
 #   - By default it uses master, because it's the last stable version
-#   - You can set it to to a fixed version (i.e. v0.6.12) 
-#   - You can use latest unastable version: development
+#   - You can set it to to a fixed version (i.e. v0.6.12)
+#   - You can use latest unstable version: development
 DX_SERVICE_VERSION=staging
 
 # Increase debug messages
