@@ -18,6 +18,10 @@ BOTS_CONTAINER_CONF_DIR=/usr/src/app/custom_conf
 BOTS_CONFIG_INFO="Bots config file: $BOTS_CONF_FILE"
 BOTS_LOCAL_CONF_DIR="$(pwd)/$BOTS_CONF_DIR"
 
+# For PRO, please use fixed version
+#   https://hub.docker.com/r/gnosispm/dx-services/tags/
+DX_SERVICE_VERSION=${DX_SERVICE_VERSION:-stable}
+
 # Extra config for the bots
 read -r -d '' DOCKER_PARAMS_BOTS << EOM
  --mount type=bind,source=$BOTS_LOCAL_CONF_DIR,destination=$BOTS_CONTAINER_CONF_DIR

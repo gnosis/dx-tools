@@ -14,7 +14,7 @@
 # Config
 NETWORK=${NETWORK:-rinkeby}
 ETHEREUM_RPC_URL="https://${NETWORK}.infura.io"
-DX_SERVICE_VERSION=staging # Check: https://hub.docker.com/r/gnosispm/dx-services/tags/
+DX_SERVICE_VERSION=${DX_SERVICE_VERSION:-staging} # Check: https://hub.docker.com/r/gnosispm/dx-services/tags/
 SHOW_COLORS=true
 DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*
 ENVIRONMENT=pro  # local, pre, pro
