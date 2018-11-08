@@ -16,10 +16,13 @@ Trading can be done in the following networks:
 > Please [report any issues](https://github.com/gnosis/dx-cli/issues) with
 > the CLI so we can make it better for everyone!
 
-# Documentation
-For information about how to use the CLI, please checkout the [Read the Docs section](https://dutchx.readthedocs.io/en/latest/cli.html#how-to-run-the-cli)
+# How to run the CLI
 
-For more information on the underlying protocol, checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
+* [How To run the CLI](https://dutchx.readthedocs.io/en/latest/cli.html#how-to-run-the-cli)
+* [Start trading](https://dutchx.readthedocs.io/en/latest/cli.html#start-trading)
+* [Useful command](https://dutchx.readthedocs.io/en/latest/cli.html#useful-commands)
+
+> For more information on the underlying protocol, checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 
 # No security, No liability, your own risk
