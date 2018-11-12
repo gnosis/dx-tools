@@ -2,8 +2,9 @@
   <img width="350px" src="http://dutchx.readthedocs.io/en/latest/_static/DutchX-logo_blue.svg" />
 </p>
 
-# DutchX CLI
-This project provides a simple script that will allow you to trade on the DutchX using the Command Line Interface (CLI).
+# DutchX Tools
+This project provides a Docker image that contain some useful tools for interacting
+with the DutchX as the Command Line Interface (CLI) and the Bots.
 Trading can be done in the following networks:
 
 * Rinkeby (recommended to test)
@@ -13,16 +14,22 @@ Trading can be done in the following networks:
 > The CLI was initially created for testing purposes and internal use only, hence some commands might work
 > differently than explained here or as expected.
 >
-> Please [report any issues](https://github.com/gnosis/dx-cli/issues) with
-> the CLI so we can make it better for everyone!
+> Please [report any issues](https://github.com/gnosis/dx-tools/issues) with
+> the tools so we can make them better for everyone!
+
+# How to run the Bots
+
+* [How To run the Bots](https://dutchx.readthedocs.io/en/latest/bots-market-making.html)
+* [Bot types](https://dutchx.readthedocs.io/en/latest/bots-types.html)
+* [Bots price feeds](https://dutchx.readthedocs.io/en/latest/bots-price-feed.html)
+
+> For more information on the underlying protocol, checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 # How to run the CLI
 
 * [How To run the CLI](https://dutchx.readthedocs.io/en/latest/cli.html#how-to-run-the-cli)
 * [Start trading](https://dutchx.readthedocs.io/en/latest/cli.html#start-trading)
 * [Useful command](https://dutchx.readthedocs.io/en/latest/cli.html#useful-commands)
-
-> For more information on the underlying protocol, checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
 
 
 # No security, No liability, your own risk
