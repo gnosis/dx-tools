@@ -17,6 +17,12 @@ Trading can be done in the following networks:
 > Please [report any issues](https://github.com/gnosis/dx-tools/issues) with
 > the tools so we can make them better for everyone!
 
+# How to run the CLI
+
+* [How To run the CLI](https://dutchx.readthedocs.io/en/latest/cli.html#how-to-run-the-cli)
+* [Start trading](https://dutchx.readthedocs.io/en/latest/cli.html#start-trading)
+* [Useful command](https://dutchx.readthedocs.io/en/latest/cli.html#useful-commands)
+
 # How to run the Bots
 
 * [How To run the Bots](https://dutchx.readthedocs.io/en/latest/bots-market-making.html)
@@ -24,13 +30,6 @@ Trading can be done in the following networks:
 * [Bots price feeds](https://dutchx.readthedocs.io/en/latest/bots-price-feed.html)
 
 > For more information on the underlying protocol, checkout the [DutchX Documentation](http://dutchx.readthedocs.io/en/latest).
-
-# How to run the CLI
-
-* [How To run the CLI](https://dutchx.readthedocs.io/en/latest/cli.html#how-to-run-the-cli)
-* [Start trading](https://dutchx.readthedocs.io/en/latest/cli.html#start-trading)
-* [Useful command](https://dutchx.readthedocs.io/en/latest/cli.html#useful-commands)
-
 
 # No security, No liability, your own risk
 This CLI is made available to you on an as-is basis without any form of warranty, representation or assurance (in each case whether express or implied) that the CLI is fit for its intended purpose or that it is free from any errors or faults causing you loss or damage.
