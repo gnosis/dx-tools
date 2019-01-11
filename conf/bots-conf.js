@@ -4,6 +4,8 @@
 const MARKETS = _getMarkets()
 const DEFAULT_GAS_PRICE_USED = 'fast' // safeLow, average, fast
 
+const MAIN_BOT_ACCOUNT = 0
+
 // Buy bot rules
 const BUY_LIQUIDITY_RULES_DEFAULT = [
   // Buy 1/2 if price falls below 99%
@@ -32,9 +34,9 @@ const BUY_LIQUIDITY_RULES_DEFAULT = [
 ]
 
 // Buy bots
-const MAIN_BOT_ACCOUNT = 0
-const BUY_LIQUIDITY_BOTS = [{
+cons BUY_BOT_MAIN = {
   name: 'Main buyer bot',
+  factory: 'src/bots/BuyLiquidityBot'
   markets: MARKETS,
   accountIndex: MAIN_BOT_ACCOUNT,
   rules: BUY_LIQUIDITY_RULES_DEFAULT,
@@ -42,12 +44,13 @@ const BUY_LIQUIDITY_BOTS = [{
     type: 'slack',
     channel: '' // If none provided uses SLACK_CHANNEL_BOT_TRANSACTIONS
   }],
-  checkTimeInMilliseconds: 10 * 1000 // 60s
-}]
+  checkTimeInMilliseconds: 60 * 1000 // 60s
+}
 
 // Sell Bots
-const SELL_LIQUIDITY_BOTS = [{
+const SELL_BOT_MAIN = {
   name: 'Main seller bot',
+  factory: 'src/bots/SellLiquidityBot',
   markets: MARKETS,
   accountIndex: MAIN_BOT_ACCOUNT,
   notifications: [{
@@ -55,7 +58,33 @@ const SELL_LIQUIDITY_BOTS = [{
     channel: '' // If none provided uses SLACK_CHANNEL_BOT_TRANSACTIONS
   }],
   checkTimeInMilliseconds: 60 * 1000 // 60s
-}]
+}
+
+const BALANCE_CHECK_BOT = {
+  name: 'Balance check bot',
+  factory: 'src/bots/BalanceCheckBot',
+  tokens: BOT_TOKENS,
+  accountIndex: MAIN_BOT_ACCOUNT,
+  notifications,
+  minimumAmountForEther: 0.4,
+  minimumAmountInUsdForToken: 5000
+}
+
+const HIGH_SELL_VOLUME_BOT = {
+  name: 'High sell volume bot',
+  factory: 'src/bots/HighSellVolumeBot',
+  markets: BOT_MARKETS,
+  accountIndex: MAIN_BOT_ACCOUNT,
+  notifications
+}
+
+// Watch events and notify the event bus
+//   - Other bots, like the sell bot depends on it
+const WATCH_EVENTS_BOTS = {
+  name: 'Watch events bot',
+  markets: MARKETS,
+  factory: 'src/bots/WatchEventsBot'
+}
 
 const EXCHANGE_PRICE_FEED_STRATEGIES_DEFAULT = {
   strategy: 'sequence', // TODO: More strategies can be implemented. i.e. averages, median, ponderated volumes, ...
@@ -99,11 +128,16 @@ module.exports = {
   MARKETS,
   // ...TOKEN_ADDRESSES,
 
-  // Bot config
-  MAIN_BOT_ACCOUNT,
+  // Bots config
+  BOTS: [
+    BUY_BOT_MAIN,
+    SELL_BOT_MAIN,
+    BALANCE_CHECK_BOT,
+    HIGH_SELL_VOLUME_BOT,
+    WATCH_EVENTS_BOTS
+  ],
+
   BUY_LIQUIDITY_RULES_DEFAULT,
-  BUY_LIQUIDITY_BOTS,
-  SELL_LIQUIDITY_BOTS,
   BOTS_API_PORT,
 
   // Price feed config
