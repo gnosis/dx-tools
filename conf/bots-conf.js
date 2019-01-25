@@ -34,9 +34,9 @@ const BUY_LIQUIDITY_RULES_DEFAULT = [
 ]
 
 // Buy bots
-cons BUY_BOT_MAIN = {
+const BUY_BOT_MAIN = {
   name: 'Main buyer bot',
-  factory: 'src/bots/BuyLiquidityBot'
+  factory: 'src/bots/BuyLiquidityBot',
   markets: MARKETS,
   accountIndex: MAIN_BOT_ACCOUNT,
   rules: BUY_LIQUIDITY_RULES_DEFAULT,
