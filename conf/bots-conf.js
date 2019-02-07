@@ -33,6 +33,70 @@ const BUY_LIQUIDITY_RULES_DEFAULT = [
   }
 ]
 
+const PRICE_REPO = {
+  factory: 'src/repositories/PriceRepo/PriceRepoImpl',
+  priceFeedStrategiesDefault: {
+    strategy: 'sequence',
+    feeds: ['binance', 'huobi', 'kraken', 'bitfinex', 'idex', 'hitbtc', 'liquid']
+  },
+  priceFeedStrategies: {
+    'WETH-OMG': {
+      strategy: 'sequence',
+      feeds: ['binance', 'huobi', 'bitfinex']
+    },
+    'WETH-RDN': {
+      strategy: 'sequence',
+      feeds: ['huobi', 'binance', 'bitfinex']
+    },
+    'DAI-MKR': {
+      strategy: 'sequence',
+      feeds: ['hitbtc', 'bitfinex']
+    },
+    'WETH-DAI': {
+      strategy: 'sequence',
+      feeds: ['hitbtc', 'bitfinex']
+    },
+    'WETH-MKR': {
+      strategy: 'sequence',
+      feeds: ['hitbtc', 'bitfinex']
+    },
+    'WETH-GEN': {
+      strategy: 'sequence',
+      feeds: ['idex', 'liquid']
+    }
+  },
+  priceFeeds: {
+    binance: {
+      factory: 'src/repositories/PriceRepo/feeds/PriceRepoBinance'
+    },
+    huobi: {
+      factory: 'src/repositories/PriceRepo/feeds/PriceRepoHuobi'
+    },
+    kraken: {
+      factory: 'src/repositories/PriceRepo/feeds/PriceRepoKraken',
+      url: 'https://api.kraken.com',
+      version: '0'
+    },
+    bitfinex: {
+      factory: 'src/repositories/PriceRepo/feeds/PriceRepoBitfinex'
+    },
+    idex: {
+      factory: 'src/repositories/PriceRepo/feeds/PriceRepoIdex'
+    },
+    hitbtc: {
+      factory: 'src/repositories/PriceRepo/feeds/PriceRepoHitbtc'
+    },
+    liquid: {
+      factory: 'src/repositories/PriceRepo/feeds/PriceRepoLiquid'
+    }
+  },
+  strategies: {
+    sequence: {
+      factory: 'src/repositories/PriceRepo/strategies/sequence'
+    }
+  }
+}
+
 // Buy bots
 const BUY_BOT_MAIN = {
   name: 'Main buyer bot',
@@ -80,22 +144,27 @@ const HIGH_SELL_VOLUME_BOT = {
 
 // Watch events and notify the event bus
 //   - Other bots, like the sell bot depends on it
-const WATCH_EVENTS_BOTS = {
+const WATCH_EVENTS_BOT = {
   name: 'Watch events bot',
   markets: MARKETS,
   factory: 'src/bots/WatchEventsBot'
 }
 
-const EXCHANGE_PRICE_FEED_STRATEGIES_DEFAULT = {
-  strategy: 'sequence', // TODO: More strategies can be implemented. i.e. averages, median, ponderated volumes, ...
-  feeds: ['binance', 'huobi', 'kraken', 'bitfinex']
-}
-
-const EXCHANGE_PRICE_FEED_STRATEGIES = {
-  'WETH-RDN': {
-    strategy: 'sequence',
-    feeds: ['huobi', 'binance', 'bitfinex']
-  }
+const DEPOSIT_BOT = {
+  name: 'Deposit bot',
+  factory: 'src/bots/DepositBot',
+  tokens: BOT_TOKENS,
+  accountIndex: MAIN_BOT_ACCOUNT,
+  notifications,
+  // You can use this to have some time to manually withdraw funds
+  inactivityPeriods: [{
+    from: '11:30',
+    to: '12:00'
+  }, {
+    from: '15:30',
+    to: '16:00'
+  }],
+  checkTimeInMilliseconds: 5 * 60 * 1000 // 5min
 }
 
 // Bots API Port
@@ -134,13 +203,13 @@ module.exports = {
     SELL_BOT_MAIN,
     BALANCE_CHECK_BOT,
     HIGH_SELL_VOLUME_BOT,
-    WATCH_EVENTS_BOTS
+    WATCH_EVENTS_BOT,
+    DEPOSIT_BOT
   ],
 
   BUY_LIQUIDITY_RULES_DEFAULT,
   BOTS_API_PORT,
 
   // Price feed config
-  EXCHANGE_PRICE_FEED_STRATEGIES_DEFAULT,
-  EXCHANGE_PRICE_FEED_STRATEGIES,
+  PRICE_REPO
 }
