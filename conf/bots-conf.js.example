@@ -1,7 +1,8 @@
 // Get the markets (configured used environment variables)
 //  i.e. MARKETS=RDN-WETH,OMG-WETH
 //  See the network-<networkName>.conf files
-const MARKETS = _getMarkets()
+const MARKETS = []
+const TOKENS = []
 const DEFAULT_GAS_PRICE_USED = 'fast' // safeLow, average, fast
 
 const MAIN_BOT_ACCOUNT = 0
@@ -34,6 +35,7 @@ const BUY_LIQUIDITY_RULES_DEFAULT = [
 ]
 
 const PRICE_REPO = {
+  // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/PriceRepoImpl.js
   factory: 'src/repositories/PriceRepo/PriceRepoImpl',
   priceFeedStrategiesDefault: {
     strategy: 'sequence',
@@ -67,31 +69,39 @@ const PRICE_REPO = {
   },
   priceFeeds: {
     binance: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/feeds/PriceRepoBinance.js
       factory: 'src/repositories/PriceRepo/feeds/PriceRepoBinance'
     },
     huobi: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/feeds/PriceRepoHuobi.js
       factory: 'src/repositories/PriceRepo/feeds/PriceRepoHuobi'
     },
     kraken: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/feeds/PriceRepoKraken.js
       factory: 'src/repositories/PriceRepo/feeds/PriceRepoKraken',
       url: 'https://api.kraken.com',
       version: '0'
     },
     bitfinex: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/feeds/PriceRepoBitfinex.js
       factory: 'src/repositories/PriceRepo/feeds/PriceRepoBitfinex'
     },
     idex: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/feeds/PriceRepoIdex.js
       factory: 'src/repositories/PriceRepo/feeds/PriceRepoIdex'
     },
     hitbtc: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/feeds/PriceRepoHitbtc.js
       factory: 'src/repositories/PriceRepo/feeds/PriceRepoHitbtc'
     },
     liquid: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/feeds/PriceRepoLiquid.js
       factory: 'src/repositories/PriceRepo/feeds/PriceRepoLiquid'
     }
   },
   strategies: {
     sequence: {
+      // https://github.com/gnosis/dx-services/blob/master/src/repositories/PriceRepo/strategies/sequence.js
       factory: 'src/repositories/PriceRepo/strategies/sequence'
     }
   }
@@ -100,62 +110,61 @@ const PRICE_REPO = {
 // Buy bots
 const BUY_BOT_MAIN = {
   name: 'Main buyer bot',
+  // https://github.com/gnosis/dx-services/blob/master/src/bots/BuyLiquidityBot.js
   factory: 'src/bots/BuyLiquidityBot',
   markets: MARKETS,
   accountIndex: MAIN_BOT_ACCOUNT,
   rules: BUY_LIQUIDITY_RULES_DEFAULT,
-  notifications: [{
-    type: 'slack',
-    channel: '' // If none provided uses SLACK_CHANNEL_BOT_TRANSACTIONS
-  }],
+  notifications: [],
   checkTimeInMilliseconds: 60 * 1000 // 60s
 }
 
 // Sell Bots
 const SELL_BOT_MAIN = {
   name: 'Main seller bot',
+  // https://github.com/gnosis/dx-services/blob/master/src/bots/SellLiquidityBot.js
   factory: 'src/bots/SellLiquidityBot',
   markets: MARKETS,
   accountIndex: MAIN_BOT_ACCOUNT,
-  notifications: [{
-    type: 'slack',
-    channel: '' // If none provided uses SLACK_CHANNEL_BOT_TRANSACTIONS
-  }],
+  notifications: [],
   checkTimeInMilliseconds: 60 * 1000 // 60s
 }
 
 const BALANCE_CHECK_BOT = {
   name: 'Balance check bot',
+  // https://github.com/gnosis/dx-services/blob/master/src/bots/BalanceCheckBot.js
   factory: 'src/bots/BalanceCheckBot',
-  tokens: BOT_TOKENS,
+  tokens: TOKENS,
   accountIndex: MAIN_BOT_ACCOUNT,
-  notifications,
+  notifications: [],
   minimumAmountForEther: 0.4,
   minimumAmountInUsdForToken: 5000
 }
 
 const HIGH_SELL_VOLUME_BOT = {
   name: 'High sell volume bot',
+  // https://github.com/gnosis/dx-services/blob/master/src/bots/HighSellVolumeBot.js
   factory: 'src/bots/HighSellVolumeBot',
-  markets: BOT_MARKETS,
+  markets: MARKETS,
   accountIndex: MAIN_BOT_ACCOUNT,
-  notifications
+  notifications: []
 }
 
-// Watch events and notify the event bus
-//   - Other bots, like the sell bot depends on it
+// This bot is required by other bots like the sell bot
 const WATCH_EVENTS_BOT = {
   name: 'Watch events bot',
   markets: MARKETS,
+  // https://github.com/gnosis/dx-services/blob/master/src/bots/WatchEventsBot.js
   factory: 'src/bots/WatchEventsBot'
 }
 
 const DEPOSIT_BOT = {
   name: 'Deposit bot',
+  // https://github.com/gnosis/dx-services/blob/master/src/bots/DepositBot.js
   factory: 'src/bots/DepositBot',
-  tokens: BOT_TOKENS,
+  tokens: TOKENS,
   accountIndex: MAIN_BOT_ACCOUNT,
-  notifications,
+  notifications: [],
   // You can use this to have some time to manually withdraw funds
   inactivityPeriods: [{
     from: '11:30',
@@ -169,26 +178,6 @@ const DEPOSIT_BOT = {
 
 // Bots API Port
 BOTS_API_PORT = 8081
-
-function _getMarkets () {
-  let markets
-  const marketsEnv = process.env['MARKETS']
-  if (marketsEnv) {
-    const marketsArray = marketsEnv.split(',')
-    markets = marketsArray.map(marketString => {
-      const market = marketString.split('-')
-      return {
-        tokenA: market[0],
-        tokenB: market[1]
-      }
-    })
-  } else {
-    throw new Error('The markets environment var is mandatory. i.e. MARKETS=RDN-WETH,OMG-WETH')
-  }
-
-  return markets
-}
-
 
 module.exports = {
   DEFAULT_GAS_PRICE_USED,
