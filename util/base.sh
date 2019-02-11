@@ -29,8 +29,10 @@ ENVIRONMENT=pro  # local, pre, pro
 #
 #   - The DOCKER_PARAMS_LOCAL can be optionally overrided in local.conf to allow
 #     to add any arbritraty info
-MNEMONIC_DEFAULT="super secret thing that nobody should know"
+DEFAULT_MNEMONIC="super secret thing that nobody should know"
 MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
+DEFAULT_PK="afe7bbba49336d061a0991dcc4265edc6d0efe1af6c80a848c6e8996986d0159"
+PK="${PK:-$DEFAULT_PK}"
 DOCKER_PARAMS_LOCAL=""
 
 # IMPORTANT:
@@ -79,6 +81,7 @@ docker run \
   -e DEBUG=$DEBUG_MESSAGES \
   -e DEBUG_COLORS=$SHOW_COLORS \
   -e MNEMONIC="$MNEMONIC" \
+  -e PK="$PK" \
   -e NETWORK="$NETWORK" \
   -e ETHEREUM_RPC_URL=$ETHEREUM_RPC_URL \
   -e NODE_ENV=$ENVIRONMENT \
