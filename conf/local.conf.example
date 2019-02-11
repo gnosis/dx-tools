@@ -19,8 +19,10 @@
 #   - Allow to override it using environment variables.
 #     i.e:
 #         MNEMONIC="any other mnemonic" ./dutchx-mainnet -h
-DEFAULT_MNEMONIC="this is your local private mnemonic no body should know about"
-MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
+#DEFAULT_MNEMONIC="this is your local private mnemonic no body should know about"
+#MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
+DEFAULT_PK="afe7bbba49336d061a0991dcc4265edc6d0efe1af6c80a848c6e8996986d0159"
+PK="${PK:-$DEFAULT_PK}"
 
 # Version
 #   - IMPORTANT: For PRODUCTION environemt use a fixed version (especially if you use the bots)
