@@ -1,0 +1,19 @@
+module.exports =
+// RDN-WETH
+{
+  // RDN
+  tokenA: {
+    address: '0x The token you want to add address',
+    funding: 0
+  },
+  // WETH
+  tokenB: {
+    address: '0x The token you want to add address',
+    funding: 9.5 // USD10k in token
+  },
+  // Price: https://www.coingecko.com/en/price_charts/raiden-network/eth
+  initialPrice: {
+    numerator: 1,
+    denominator: 500
+  }
+}

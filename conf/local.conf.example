@@ -25,10 +25,10 @@ DEFAULT_PK="afe7bbba49336d061a0991dcc4265edc6d0efe1af6c80a848c6e8996986d0159"
 PK="${PK:-$DEFAULT_PK}"
 
 # Version
-#   - IMPORTANT: For PRODUCTION environemt use a fixed version (especially if you use the bots)
+#   - IMPORTANT: For PRODUCTION environment use a fixed version (especially if you use the bots)
 #   - You can use any version in https://hub.docker.com/r/gnosispm/dx-services/tags/
-#       - You can set it to to a fixed version (i.e. v0.7.9) 
-#       - You can use latest unastable version: development
+#       - You can set it to to a fixed version (i.e. v0.7.9)
+#       - You can use latest unstable version: development
 #       - You can use the master branch: staging
 #DX_SERVICE_VERSION=v0.7.9
 

@@ -78,6 +78,7 @@ docker pull $DOCKER_IMAGE
 echo
 docker run \
   -p 8081:8081 \
+  -v "$(pwd)"/resources:/usr/src/app/resources \
   -e DEBUG=$DEBUG_MESSAGES \
   -e DEBUG_COLORS=$SHOW_COLORS \
   -e MNEMONIC="$MNEMONIC" \
