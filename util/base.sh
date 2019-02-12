@@ -19,30 +19,9 @@ SHOW_COLORS=true
 DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*
 ENVIRONMENT=pro  # local, pre, pro
 
-# IMPORTANT:
-#   - Override the MNEMONIC variable in a uncommited file 'local.conf'
-#     Use 'local.conf.example' as an example
-#
-#   - Alternative, if there's no 'local.conf', you can also provide MNEMONIC as
-#     a environment variable. i.e
-#       MNEMONIC="any other mnemonic" cli -h
-#
+#   - This value is setted to a default to make optional to create a local.conf
 #   - The DOCKER_PARAMS_LOCAL can be optionally overrided in local.conf to allow
 #     to add any arbritraty info
-DEFAULT_MNEMONIC="super secret thing that nobody should know"
-MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
-DEFAULT_PK="afe7bbba49336d061a0991dcc4265edc6d0efe1af6c80a848c6e8996986d0159"
-PK="${PK:-$DEFAULT_PK}"
-if [[ $MNEMONIC != $DEFAULT_MNEMONIC ]]; then
-  ACCOUNT_SECRET_METHOD=MNEMONIC
-  ACCOUNT_SECRET_VALUE=$MNEMONIC
-fi
-if [[ $PK != $DEFAULT_PK ]]; then
-  ACCOUNT_SECRET_METHOD=PK
-  ACCOUNT_SECRET_VALUE=$PK
-fi
-echo $ACCOUNT_SECRET_METHOD
-echo $ACCOUNT_SECRET_VALUE
 DOCKER_PARAMS_LOCAL=""
 
 # IMPORTANT:
@@ -59,6 +38,28 @@ LOCAL_CONF="conf/local.conf"
 NETWORK_CONF="conf/network-$NETWORK.conf"
 [ -f "$LOCAL_CONF" ] && source "$LOCAL_CONF" || echo "WARN: $LOCAL_CONF file wasn't found. Using default config"
 [ -f "$NETWORK_CONF" ] && source "$NETWORK_CONF" || echo "WARN: $NETWORK_CONF file wasn't found. Using default config"
+
+# IMPORTANT:
+#   - Override the MNEMONIC variable in a uncommited file 'local.conf'
+#     Use 'local.conf.example' as an example
+#
+#   - Alternative, if there's no 'local.conf', you can also provide MNEMONIC as
+#     a environment variable. i.e
+#       MNEMONIC="any other mnemonic" cli -h
+#
+DEFAULT_MNEMONIC="super secret thing that nobody should know"
+MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
+DEFAULT_PK="afe7bbba49336d061a0991dcc4265edc6d0efe1af6c80a848c6e8996986d0159"
+PK="${PK:-$DEFAULT_PK}"
+
+# Select account secret method.
+# After loading all configuration we select the Account Secret used MNEMONIC or PK
+ACCOUNT_SECRET_METHOD=MNEMONIC
+ACCOUNT_SECRET_VALUE=$MNEMONIC
+if [[ $PK != $DEFAULT_PK ]]; then
+  ACCOUNT_SECRET_METHOD=PK
+  ACCOUNT_SECRET_VALUE=$PK
+fi
 
 # Docker image used:
 #   https://hub.docker.com/r/gnosispm/dx-services/tags/
