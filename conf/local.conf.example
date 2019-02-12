@@ -17,17 +17,23 @@
 # Mnemonic:
 #   - Use the DEFAULT_MNEMONIC
 #   - Allow to override it using environment variables.
+#   - Should not be used at the same time as the PK (private key)
 #     i.e:
 #         MNEMONIC="any other mnemonic" ./dutchx-mainnet -h
-#DEFAULT_MNEMONIC="this is your local private mnemonic no body should know about"
+#DEFAULT_MNEMONIC="super secret thing that nobody should know"
 #MNEMONIC="${MNEMONIC:-$DEFAULT_MNEMONIC}"
-DEFAULT_PK="afe7bbba49336d061a0991dcc4265edc6d0efe1af6c80a848c6e8996986d0159"
-PK="${PK:-$DEFAULT_PK}"
+
+# Private key:
+#   - Some times using a Private Key is more convenient
+#   - Allow to select one account by Private Key
+#   - Should not be used at the same time with a MNEMONIC
+#DEFAULT_PK="afe7bbba49336d061a0991dcc4265edc6d0efe1af6c80a848c6e8996986d0159"
+#PK="${PK:-$DEFAULT_PK}"
 
 # Version
 #   - IMPORTANT: For PRODUCTION environment use a fixed version (especially if you use the bots)
 #   - You can use any version in https://hub.docker.com/r/gnosispm/dx-services/tags/
-#       - You can set it to to a fixed version (i.e. v0.7.9)
+#       - You can set it to to a fixed version (i.e. v1.0.8)
 #       - You can use latest unstable version: development
 #       - You can use the master branch: staging
 #DX_SERVICE_VERSION=v1.0.8
