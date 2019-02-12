@@ -1,5 +1,5 @@
 .history
 *.log
 .vscode
-bots.conf
+bots-conf.js
 local.conf
