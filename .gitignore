@@ -1,4 +1,5 @@
 .history
 *.log
 .vscode
+bots.conf
 local.conf
