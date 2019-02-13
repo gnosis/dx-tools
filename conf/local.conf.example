@@ -1,5 +1,5 @@
-# Local config for the CLI example
-#   - Here you can add your own mnemonic or any other config.
+# Local config for the dx-tools
+#   - Here you can add your own MNEMONIC or any other configuration.
 #   - If you only modify this file you can keep updating the repository with
 #     the latest changes
 
@@ -15,8 +15,8 @@
 # set -x
 
 # Mnemonic:
-#   - Use the DEFAULT_MNEMONIC
-#   - Allow to override it using environment variables.
+#   - You can paste your mnemonic phrase in the DEFAULT_MNEMONIC
+#   - This will allow to override it using environment variables to check other accounts with the CLI.
 #   - Should not be used at the same time as the PK (private key)
 #     i.e:
 #         MNEMONIC="any other mnemonic" ./dutchx-mainnet -h

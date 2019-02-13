@@ -1,3 +1,14 @@
+// Local config for the dx-tools when using bots
+//   - Here you can add your desired bot configuration.
+//   - If you only modify this file you can keep updating the repository with
+//     the latest changes
+
+// Setup:
+//   1. Duplicate this file and call it 'bots-conf.js'
+//      note:
+//        'bots-conf.js' is git ignored, so you can add all your configuration here
+//        you should NEVER share this file with anyone
+
 // Get the markets (configured used environment variables)
 //  i.e. MARKETS=RDN-WETH,OMG-WETH
 //  See the network-<networkName>.conf files
