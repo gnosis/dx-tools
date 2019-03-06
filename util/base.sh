@@ -87,7 +87,7 @@ echo "[cli] Getting docker image: $DOCKER_IMAGE..."
 docker pull $DOCKER_IMAGE
 
 echo
-docker run \
+docker run --rm \
   -p 8081:8081 \
   -v "$(pwd)"/resources:/usr/src/app/resources \
   -e DEBUG=$DEBUG_MESSAGES \
