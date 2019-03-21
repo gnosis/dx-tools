@@ -13,7 +13,10 @@
 
 # Config
 NETWORK=${NETWORK:-rinkeby}
-ETHEREUM_RPC_URL="https://${NETWORK}.infura.io"
+# This is a global API key we provide for user testing. You are encouraged to
+# request your own API key to avoid potential request limits issues.
+# You can get one in https://infura.io/dashboard
+ETHEREUM_RPC_URL="https://${NETWORK}.infura.io/v3/9408f47dedf04716a03ef994182cf150"
 DX_SERVICE_VERSION=${DX_SERVICE_VERSION:-staging} # Check: https://hub.docker.com/r/gnosispm/dx-services/tags/
 SHOW_COLORS=true
 DEBUG_MESSAGES=DEBUG=ERROR-*,WARN-*,INFO-*

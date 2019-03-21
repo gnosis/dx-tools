@@ -45,7 +45,10 @@
 #SHOW_COLORS=true
 
 # Node
-#ETHEREUM_RPC_URL="https://${NETWORK}.infura.io"
+# This is a global API key we provide for user testing. You are encouraged to
+# request your own API key to avoid potential request limits issues.
+# You can get one in https://infura.io/dashboard
+#ETHEREUM_RPC_URL="https://${NETWORK}.infura.io/v3/9408f47dedf04716a03ef994182cf150"
 
 # Optionally, you can add env vars in your local conf
 # For example:
