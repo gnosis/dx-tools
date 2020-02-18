@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Token Confing in:
+#   ./network-config.conf
+
+# Get started with the CLI
+#   https://github.com/gnosis/dx-cli#get-started-with-the-cli
+
+# Uncomment for DEBUG the script
+#set -x 
+
+NETWORK=kovan
+source util/app-command-api.sh
+source util/base-api.sh

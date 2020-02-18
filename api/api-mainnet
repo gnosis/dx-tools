@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Token Config in:
+#   ./network-mainnet.conf
+
+# Get started with the CLI
+#   https://github.com/gnosis/dx-cli#get-started-with-the-cli
+
+# Uncomment for DEBUG the script
+#set -x 
+
+NETWORK=mainnet
+source util/app-command-api.sh
+source util/base-api.sh
+
+

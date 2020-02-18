@@ -97,6 +97,7 @@ docker pull $DOCKER_IMAGE
 echo
 docker run --rm \
   -p 8081:8081 \
+  -p 8080:8080 \
   -v "$(pwd)"/resources:/usr/src/app/resources \
   -e DEBUG=$DEBUG_MESSAGES \
   -e $ACCOUNT_SECRET_METHOD="$ACCOUNT_SECRET_VALUE" \
